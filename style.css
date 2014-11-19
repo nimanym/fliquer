@@ -42,7 +42,7 @@ p {
 form {
 	border-style: solid;
 	border-color: white;
-	width: 220px;
+	width: 300px;
 	padding: 25px;
 	padding-top: 5px;
 	margin-bottom: 25px;
@@ -123,6 +123,6 @@ nav{
 	display: none; 
 	position: absolute; 
 	float: fixed; 
-	margin-left: 79.5%;
+	margin-left: 73.5%;
 	margin-top: 29.5px;"
 }

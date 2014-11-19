@@ -51,8 +51,10 @@ function cerrarDesplegable() {
 
 			<form action="login.php" method="post" id="formularioLogin" class="formLoginDesp" >
 				<h2>Acceder</h2>
-				Usuario: <br /><input type="text" name="user" id="user"><br />
-				Contraseña: <br /><input type="password" name="password" id="password"><br />
+				<p>Usuario: <br /><input type="text" name="user" id="user"></p>
+				<p>Contraseña: <br /><input type="password" name="password" id="password"></p>
+				<p><input type="checkbox" name="recordarEnEsteEquipo" id="recordarEnEsteEquipo" /> Recordarme</p>
+
 				<input type="button" value="Enviar" onClick="enviar()" />
 			</form>
 		</li>
