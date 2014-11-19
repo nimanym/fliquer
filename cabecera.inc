@@ -49,7 +49,7 @@ function cerrarDesplegable() {
 		<li><a href="formulariobusqueda.php">Búsqueda</a></li>
 		<li><a class="login" href="#" onclick="abrirDesplegable()" >Iniciar Sesión</a>
 
-			<form action="login.php" method="post" id="formularioLogin" class="formLoginDesp" onclick="cerrarDesplegable()" >
+			<form action="login.php" method="post" id="formularioLogin" class="formLoginDesp" >
 				<h2>Acceder</h2>
 				Usuario: <br /><input type="text" name="user" id="user"><br />
 				Contraseña: <br /><input type="password" name="password" id="password"><br />
