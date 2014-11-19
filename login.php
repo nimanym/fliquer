@@ -23,6 +23,8 @@ $uri = rtrim(dirname($_SERVER['PHP_SELF']), '/\\');
 
 
 if($_POST['user'] == $user1||$_POST['user'] == $user2){
+	if($_POST["recordarLogin"])
+	setcookie ( 'recordar', $_POST['user'], time() + 365 * 24 * 60 * 60);
 	$extra = 'menuregistrado.php';
 	header("Location: http://$host$uri/$extra");
 }
