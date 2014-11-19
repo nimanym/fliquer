@@ -1,0 +1,128 @@
+body {
+	background-color: #587EA1;
+	color: #FFFFFF;
+	font-family: "Verdana";
+}
+
+
+a {
+	text-decoration: none;
+	color: #FFFFFF;
+}
+
+h1 {
+	text-align: center;
+}
+
+.home{
+	text-align:center;
+}
+
+img{
+	/*padding: 10px;*/
+	border: solid;
+	border-color: white;
+	margin: 10px;
+}
+
+a img:hover,a img:active{
+	border-color: purple;
+}
+.titulo{
+	text-align: center;
+	font-family: 'Montserrat', sans-serif;
+	font-size: 60px;
+	background-color: #A9A9A9;
+}
+
+p {
+    /*font-size: 20px;*/
+}
+
+form {
+	border-style: solid;
+	border-color: white;
+	width: 220px;
+	padding: 25px;
+	padding-top: 5px;
+	margin-bottom: 25px;
+	background-color: #7193B3;
+}
+
+td {
+    padding: 15px;
+}
+
+table, th, td {
+   border: 1px solid black;
+   background-color: #7193B3;
+}
+
+li{
+	font-size: 30px;
+	margin: 50px;
+}
+
+.fotodetalle{
+	border: 20px solid white;
+}
+
+nav ul{
+   list-style-type: none;
+   list-style-position: outline;
+   padding: 1px;
+}
+nav li{
+	font-size: 17px;
+    display: inline;
+    text-align: center;
+	margin: 0px;
+	padding: 0px;
+}
+
+
+nav li a {
+
+	float:left;
+	color: #D4D9FF;
+	margin: 0px;
+	margin-top: -18px;
+	text-decoration: none;
+	font-weight: bold;
+	padding: 13px;
+	
+}
+
+nav li a:hover,.barraNav li a:active{
+	background-color: #7193B3;
+}
+
+.login{
+	color: #FFFFFF;
+	padding: 13px;
+	float: right;
+	/*margin-left: 700px;*/
+}
+
+.tema{
+	float: right;
+	margin-top: -5px;
+}
+
+nav{
+	background-color: #587EA1;
+	position: fixed;
+    left: 0;
+    top: 0;
+    width: 100%;
+	border-bottom: solid;
+	border-bottom-width: 2px;
+}
+
+.formLoginDesp{
+	display: none; 
+	position: absolute; 
+	float: fixed; 
+	margin-left: 79.5%;
+	margin-top: 29.5px;"
+}

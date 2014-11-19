@@ -1,0 +1,126 @@
+body {
+	background-color: #D9D0B1;
+	color: #000000;
+	font-family: "Gabriola";
+	font-size: 24px;
+}
+
+h1 {
+	text-align: center;
+}
+
+.home{
+	text-align:center;
+}
+
+img{
+	/*padding: 10px;*/
+	border: solid;
+	border-color: white;
+	margin: 10px;
+}
+
+a img:hover,a img:active{
+	border-color: purple;
+}
+.titulo{
+	text-align: center;
+	font-family: Gabriola;
+	font-size: 60px;
+	background-color: #BCB59E;
+}
+
+.tema{
+	float: right;
+	margin-top: -5px;
+}
+
+p {
+    /*font-size: 20px;*/
+}
+
+form {
+	border-style: solid;
+	border-color: black;
+	width: 220px;
+	padding: 25px;
+	padding-top: 5px;
+	margin-bottom: 25px;
+	background-color: #BCB59E;
+}
+
+td {
+    padding: 15px;
+}
+
+table, th, td {
+   border: 1px solid black;
+   background-color: #BCB59E;
+}
+
+li{
+	font-size: 30px;
+	margin: 50px;
+}
+
+.fotodetalle{
+	border: 20px solid white;
+}
+
+nav ul{
+   list-style-type: none;
+   list-style-position: outline;
+   padding: 1px;
+}
+nav li{
+	font-size: 17px;
+    display: inline;
+    text-align: center;
+	margin: 0px;
+	padding: 0px;
+}
+nav li a {
+
+	float:left;
+	color: #000000;
+	margin: 0px;
+	margin-top: -18px;
+	text-decoration: none;
+	font-weight: bold;
+	padding: 13px;
+	
+}
+
+nav li a:hover,.barraNav li a:active{
+	background-color: #BCB59E;
+}
+
+.login{
+	color: #FFFFFF;
+	padding: 13px;
+	float: right;
+	/*margin-left: 700px;*/
+}
+
+.tema{
+	float: right;
+	margin-top: -5px;
+}
+
+nav{
+	background-color: #BCB59E;
+	position: fixed;
+    left: 0;
+    top: 0;
+    width: 100%;
+	border-bottom: solid;
+	border-bottom-width: 2px;
+}
+
+.formLoginDesp{
+	display: none; 
+	position: absolute; 
+	float: fixed; 
+	margin-left: 79.5%;
+	margin-top: 29.5px;"
+}
