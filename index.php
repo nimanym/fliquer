@@ -15,6 +15,7 @@ function enviar() {
 
 	var usuario = document.getElementById("user").value;
 	var contrasenya = document.getElementById("password").value;
+	var recordarLogin = document.getElementById("recordarLogin").value;
 
 	usuario = usuario.replace(/\s/g,'');
 	contrasenya = contrasenya.replace(/\s/g,'');

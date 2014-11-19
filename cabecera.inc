@@ -53,7 +53,7 @@ function cerrarDesplegable() {
 				<h2>Acceder</h2>
 				<p>Usuario: <br /><input type="text" name="user" id="user"></p>
 				<p>Contraseña: <br /><input type="password" name="password" id="password"></p>
-				<p><input type="checkbox" name="recordarEnEsteEquipo" id="recordarEnEsteEquipo" /> Recordarme</p>
+				<p><input type="checkbox" name="recordarLogin" id="recordarLogin" /> Recordarme</p>
 
 				<input type="button" value="Enviar" onClick="enviar()" />
 			</form>
