@@ -54,7 +54,7 @@
 
 				<li>
 
-				<a class="login" href="#" onclick="abrirDesplegable()" >Menú</a>
+				<a class="login" href="#" onclick="abrirDesplegable()" > <?php echo $_SESSION['nombreUsu'] ?></a>
 				<form action="logout.php" method="post" id="formularioLogin" class="formLoginDesp" >
 					<h2>Hola</h2>
 					<p><?php echo $_SESSION['nombreUsu']; ?> </p>
