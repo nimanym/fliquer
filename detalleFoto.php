@@ -5,6 +5,11 @@ $nombre = "Detalles de foto";
 
 require_once("cabecera.inc");
 
+
+if(!isset($_SESSION['nombreUsu'])){
+	header('Location: nuevoUsuario.php');
+}
+
 ?>
 
 <script src="cambioEstilos.js"></script>

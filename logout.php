@@ -10,6 +10,10 @@
 
 <?php
 
+
+unset($_COOKIE["recordar"]); 
+setcookie("recordar","",time()-3600);
+
 $host = $_SERVER['HTTP_HOST'];
 $uri = rtrim(dirname($_SERVER['PHP_SELF']), '/\\');
 
@@ -21,6 +25,7 @@ setcookie(session_name(), '', time() - 42000, '/');
 }
 // Finalmente, destruye la sesión
 session_destroy();
+
 
 $extra = 'index.php';
 header("Location: http://$host$uri/$extra");

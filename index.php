@@ -31,7 +31,6 @@ function enviar() {
 	}
 
 	document.getElementById("formularioLogin").submit();
-
 }
 
 </script>

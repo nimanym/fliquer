@@ -40,36 +40,65 @@ function salir() {
 	document.getElementById("formularioLogin").submit();
 }
 
+function verPerfil() {
+
+	document.getElementById("formularioLogin").submit();
+}
+
 </script>
 
 </head>
 <!-- El cuerpo -->
 <body onload="cargaEstilo()" >
 
+<?php
+
+
+session_start();
+
+if(isset($_COOKIE['recordar'])){
+
+if(!isset($_SESSION['nombreUsu'])){
+ header('Location: index.php');
+}
+	$_SESSION['nombreUsu'] = $_COOKIE['recordar'];
+	$_SESSION['passwordUsu'] = "";
+	$t = time();
+	$_SESSION['fechaUltima'] = date("d-m-Y",$t);
+
+}
+
+?>
+
 <nav>
 	<ul id="navWrapper">
 		<li><a href="index.php">Fliquer</a></li>
 		<li><a href="nuevoUsuario.php">Nuevo usuario</a></li>
 		<li><a href="formulariobusqueda.php">Búsqueda</a></li>
-		<li><a class="login" href="#" onclick="abrirDesplegable()" >Iniciar Sesión</a>
-
-			<?php
-			if(isset($_COOKIE['PHPSESSID'])){
-				session_start();
+		<?php
+			if(isset($_SESSION['nombreUsu'])){
+				//session_start();
+				
 			?>
+
+		<li><a class="login" href="#" onclick="abrirDesplegable()" >Menú</a>
+
+			
 				<form action="logout.php" method="post" id="formularioLogin" class="formLoginDesp" >
 				<h2>Hola</h2>
 					<p><?php echo $_SESSION['nombreUsu']; ?> </p>
 					<p>Tu último login fue el <?php echo $_SESSION['fechaUltima']; ?> </p>
 
-					<input type="button" value="Enviar" onClick="enviar()" />
+					<input type="button" value="Ver perfil" onclick=" location.href='menuregistrado.php' " />
 
-					<input type="button" value="Salir" onClick="salir()" />
+					<input type="button" value="Salir" onclick=" location.href='logout.php' " />
 
 				</form>
 			<?php
 			}else{
 			?>
+
+			<li><a class="login" href="#" onclick="abrirDesplegable()" >Iniciar Sesión</a>
 
 			<form action="login.php" method="post" id="formularioLogin" class="formLoginDesp" >
 				<h2>Acceder</h2>
@@ -80,9 +109,12 @@ function salir() {
 				<input type="button" value="Enviar" onClick="enviar()" />
 			</form>
 
-			<?php
-			}
-			?>
+			
+
+		<?php
+		}
+		?>
+
 		</li>
 
 		<li class="tema">

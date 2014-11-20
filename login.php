@@ -35,13 +35,6 @@ if($_POST['user'] == $user1||$_POST['user'] == $user2){
 
 	echo $_SESSION['nombreUsu'];
 	echo $_SESSION['passwordUsu'];
-	/*
-	echo 'session_id(): ' . session_id();
-	echo "<br />\n";
-	echo 'session_name(): ' . session_name();
-	echo "<br />\n";
-	print_r(session_get_cookie_params());
-	*/
 
 	$extra = 'menuregistrado.php';
 	header("Location: http://$host$uri/$extra");
