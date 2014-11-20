@@ -36,6 +36,10 @@ function cerrarDesplegable() {
 	
 }
 
+function salir() {
+	document.getElementById("formularioLogin").submit();
+}
+
 </script>
 
 </head>
@@ -49,6 +53,24 @@ function cerrarDesplegable() {
 		<li><a href="formulariobusqueda.php">Búsqueda</a></li>
 		<li><a class="login" href="#" onclick="abrirDesplegable()" >Iniciar Sesión</a>
 
+			<?php
+			if(isset($_COOKIE['PHPSESSID'])){
+				session_start();
+			?>
+				<form action="logout.php" method="post" id="formularioLogin" class="formLoginDesp" >
+				<h2>Hola</h2>
+					<p><?php echo $_SESSION['nombreUsu']; ?> </p>
+					<p>Tu último login fue el <?php echo $_SESSION['fechaUltima']; ?> </p>
+
+					<input type="button" value="Enviar" onClick="enviar()" />
+
+					<input type="button" value="Salir" onClick="salir()" />
+
+				</form>
+			<?php
+			}else{
+			?>
+
 			<form action="login.php" method="post" id="formularioLogin" class="formLoginDesp" >
 				<h2>Acceder</h2>
 				<p>Usuario: <br /><input type="text" name="user" id="user"></p>
@@ -57,6 +79,10 @@ function cerrarDesplegable() {
 
 				<input type="button" value="Enviar" onClick="enviar()" />
 			</form>
+
+			<?php
+			}
+			?>
 		</li>
 
 		<li class="tema">
@@ -70,6 +96,11 @@ function cerrarDesplegable() {
 </nav>
 <hr/>
 <br/>
+
+
+
+
+
 
 <h1 class="titulo">
 	<?php echo $nombre; ?>

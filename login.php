@@ -26,6 +26,23 @@ if($_POST['user'] == $user1||$_POST['user'] == $user2){
 	if($_POST["recordarLogin"]=="on"){
 		setcookie ('recordar',$_POST['user'], time() + 365 * 24 * 60 * 60);
 	}
+
+	session_start();
+	$_SESSION['nombreUsu'] = $_POST['user'];
+	$_SESSION['passwordUsu'] = $_POST['password'];
+	$t = time();
+	$_SESSION['fechaUltima'] = date("d-m-Y",$t);
+
+	echo $_SESSION['nombreUsu'];
+	echo $_SESSION['passwordUsu'];
+	/*
+	echo 'session_id(): ' . session_id();
+	echo "<br />\n";
+	echo 'session_name(): ' . session_name();
+	echo "<br />\n";
+	print_r(session_get_cookie_params());
+	*/
+
 	$extra = 'menuregistrado.php';
 	header("Location: http://$host$uri/$extra");
 }
