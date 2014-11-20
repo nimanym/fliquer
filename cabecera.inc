@@ -1,3 +1,4 @@
+<!DOCTYPE html>
 <html lang="es">
 <!-- La cabecera -->
 <head>
@@ -18,34 +19,7 @@
 
 <script src="cambioEstilos.js"></script>
 <script src="validacion.js"></script>
-
-<script type="text/javascript">
-
-function abrirDesplegable() {
-
-	if(document.getElementById("formularioLogin").style.display == "block"){
-		document.getElementById("formularioLogin").style.display = "none";
-	}else{
-		document.getElementById("formularioLogin").style.display = "block";
-	}	
-}
-
-function cerrarDesplegable() {
-
-	document.getElementById("formularioLogin").style.display = "none";
-	
-}
-
-function salir() {
-	document.getElementById("formularioLogin").submit();
-}
-
-function verPerfil() {
-
-	document.getElementById("formularioLogin").submit();
-}
-
-</script>
+<script src="envio.js"></script>
 
 </head>
 <!-- El cuerpo -->
@@ -53,20 +27,18 @@ function verPerfil() {
 
 <?php
 
+	session_start();
 
-session_start();
+	if(isset($_COOKIE['recordar'])){
 
-if(isset($_COOKIE['recordar'])){
-
-if(!isset($_SESSION['nombreUsu'])){
- header('Location: index.php');
-}
-	$_SESSION['nombreUsu'] = $_COOKIE['recordar'];
-	$_SESSION['passwordUsu'] = "";
-	$t = time();
-	$_SESSION['fechaUltima'] = date("d-m-Y",$t);
-
-}
+		if(!isset($_SESSION['nombreUsu'])){
+			header('Location: index.php');
+		}
+		$_SESSION['nombreUsu'] = $_COOKIE['recordar'];
+		$_SESSION['passwordUsu'] = "";
+		$t = time();
+		$_SESSION['fechaUltima'] = date("d-m-Y",$t);
+	}
 
 ?>
 
@@ -77,45 +49,40 @@ if(!isset($_SESSION['nombreUsu'])){
 		<li><a href="formulariobusqueda.php">Búsqueda</a></li>
 		<?php
 			if(isset($_SESSION['nombreUsu'])){
-				//session_start();
-				
+				//session_start();	
 			?>
 
-		<li><a class="login" href="#" onclick="abrirDesplegable()" >Menú</a>
+				<li>
 
-			
+				<a class="login" href="#" onclick="abrirDesplegable()" >Menú</a>
 				<form action="logout.php" method="post" id="formularioLogin" class="formLoginDesp" >
-				<h2>Hola</h2>
+					<h2>Hola</h2>
 					<p><?php echo $_SESSION['nombreUsu']; ?> </p>
 					<p>Tu último login fue el <?php echo $_SESSION['fechaUltima']; ?> </p>
 
 					<input type="button" value="Ver perfil" onclick=" location.href='menuregistrado.php' " />
-
 					<input type="button" value="Salir" onclick=" location.href='logout.php' " />
-
 				</form>
+
 			<?php
 			}else{
 			?>
 
-			<li><a class="login" href="#" onclick="abrirDesplegable()" >Iniciar Sesión</a>
+				<li><a class="login" href="#" onclick="abrirDesplegable()" >Iniciar Sesión</a>
 
-			<form action="login.php" method="post" id="formularioLogin" class="formLoginDesp" >
-				<h2>Acceder</h2>
-				<p>Usuario: <br /><input type="text" name="user" id="user"></p>
-				<p>Contraseña: <br /><input type="password" name="password" id="password"></p>
-				<p><input type="checkbox" name="recordarLogin" id="recordarLogin" /> Recordarme</p>
+				<form action="login.php" method="post" id="formularioLogin" class="formLoginDesp" >
+					<h2>Acceder</h2>
+					<p>Usuario: <br /><input type="text" name="user" id="user"></p>
+					<p>Contraseña: <br /><input type="password" name="password" id="password"></p>
+					<p><input type="checkbox" name="recordarLogin" id="recordarLogin" /> Recordarme</p>
 
-				<input type="button" value="Enviar" onClick="enviar()" />
-			</form>
+					<input type="button" value="Enviar" onClick="enviar()" />
+				</form>
 
-			
-
-		<?php
-		}
-		?>
-
-		</li>
+			<?php
+			}
+			?>
+				</li>
 
 		<li class="tema">
 			<select id="selectorEstilo" onchange="estilo()">
@@ -128,11 +95,6 @@ if(!isset($_SESSION['nombreUsu'])){
 </nav>
 <hr/>
 <br/>
-
-
-
-
-
 
 <h1 class="titulo">
 	<?php echo $nombre; ?>
