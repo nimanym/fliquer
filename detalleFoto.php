@@ -15,20 +15,44 @@ if(!isset($_SESSION['nombreUsu'])){
 <script src="cambioEstilos.js"></script>
 <script src="validacion.js"></script>
 
+
 <?php
+// Conecta con el servidor de MySQL
+$link = @mysqli_connect(
+'localhost', // El servidor
+'root', // El usuario
+'', // La contraseña
+'pibd'); // La base de datos
+if(!$link) {
+	echo '<p>Error al conectar con la base de datos: ' . mysqli_connect_error();
+	echo '</p>';
+	exit;
+}
+
+// Ejecuta una sentencia SQL
+$sentencia = 'SELECT * FROM fotos WHERE IdFoto=' . $_GET["foto"];;
+if(!($resultado = @mysqli_query($link, $sentencia))) {
+echo "<p>Error al ejecutar la sentencia <b>$sentencia</b>: " . mysqli_error($link);
+echo '</p>';
+exit;
+}
+
+$foto='<img src="' . $fila['Fichero'] . '.jpg' . '"' . '</img>';
+$nombre=$fila['Titulo'];
+$fecha=$fila['Fecha'];
+$pais=$fila['Pais'];
+$descripcion=$fila['Descripcion'];
 
 
-$foto=$_GET["foto"];
-
-echo $foto;
-
-$nombre=$_GET["nombre"];
-$fecha=$_GET["fecha"];
-$pais=$_GET["pais"];
-$descripcion=$_GET["descripcion"];
-$uploader=$_GET["uploader"];
+// Libera la memoria ocupada por el resultado
+mysqli_free_result($resultado);
+// Cierra la conexión
+mysqli_close($link);
 
 ?>
+
+
+
 
 <ul style="list-style-type:none">
   <li><img class="fotodetalle" src=<?php "$foto" ?> alt="Un girasol" ></li>
