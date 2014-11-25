@@ -39,7 +39,7 @@ exit;
 	Pais: <br>
 
 
-	<select name="pais">  
+	<select name="pais" id="pais">  
 
        <option value="" selected="selected"></option>
 		<?php

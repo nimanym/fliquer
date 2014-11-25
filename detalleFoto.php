@@ -39,7 +39,7 @@ exit;
 
 $fila = mysqli_fetch_assoc($resultado);
 
-$foto='<img src="' . $fila['Fichero'] . '.jpg' . '"' . '</img>';
+$foto= $fila['Fichero'] . '.jpg';
 $nombre=$fila['Titulo'];
 $fecha=$fila['Fecha'];
 $pais=$fila['Pais'];
@@ -57,12 +57,11 @@ mysqli_close($link);
 
 
 <ul style="list-style-type:none">
-  <li><img class="fotodetalle" src=<?php "$foto" ?> alt="Un girasol" ></li>
+  <li><img class="fotodetalle" src=<?php echo $foto ?> /></li>
   <li><?php echo $nombre ?></li>
   <li><?php echo $fecha ?></li>
   <li><?php echo $pais ?></li>
   <li><?php echo $descripcion ?></li>
-  <li><?php echo $uploader ?></li>
 </ul>
 
 

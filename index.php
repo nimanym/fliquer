@@ -86,7 +86,7 @@ mysqli_close($link);
 
 	<div class="home">
 
-		<a href="detallefoto.php?foto=img/bear_thumb.jpg&nombre=Oso&fecha=10/10/2002&pais=Italia&descripcion=Un oso&uploader=Nima" ><img src="img/bear_thumb.jpg" alt="Bear" ></a>
+		<a href="detallefoto.php?foto=1" ><img src="img/bear_thumb.jpg" alt="Bear" ></a>
 		<a href="detallefoto.php?foto=chick_thumb.jpg&nombre=pollito&fecha=11/10/2002&pais=Francia&descripcion=Una pollito&uploader=Alberto" ><img src="img/chick_thumb.jpg" alt="Chicken" ></a>
 		<a href="detallefoto.php?foto=sunflower.jpg&nombre=Girasol&fecha=10/10/2042&pais=Italia&descripcion=Una flor&uploader=Nima" ><img src="img/sunflower_thumb.jpg" alt="Girasol" ></a>
 		<a href="detallefoto.php?foto=lincoln_thumb.jpg&nombre=Abraham Lincoln&fecha=24/9/2002&pais=Espana&descripcion=Presidente&uploader=Alberto" ><img src="img/lincoln_thumb.jpg" alt="Presi" ></a>
