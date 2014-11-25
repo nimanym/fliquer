@@ -37,6 +37,8 @@ echo '</p>';
 exit;
 }
 
+$fila = mysqli_fetch_assoc($resultado);
+
 $foto='<img src="' . $fila['Fichero'] . '.jpg' . '"' . '</img>';
 $nombre=$fila['Titulo'];
 $fecha=$fila['Fecha'];
