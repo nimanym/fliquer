@@ -28,7 +28,7 @@ if(!$link) {
 	exit;
 }
 
-$sentencia = 'SELECT a.* FROM albumes a, usuarios u WHERE a.Usuario=u.IdUsuario AND u.NomUsuario=' . $_SESSION['nombreUsu'];
+$sentencia = 'SELECT a.* FROM albumes a, usuarios u WHERE a.Usuario=u.IdUsuario AND u.NomUsuario="' . $_SESSION['nombreUsu'] . '"';
 if(!($resultado = @mysqli_query($link, $sentencia))) {
 echo "<p>Error al ejecutar la sentencia <b>$sentencia</b>: " . mysqli_error($link);
 echo '</p>';
