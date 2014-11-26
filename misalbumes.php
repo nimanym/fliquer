@@ -37,10 +37,19 @@ exit;
 
 echo '<dl>';
 while($fila = mysqli_fetch_assoc($resultado)) {
-echo '<dt><a href="veralbum.php?albumId=' . $fila['IdAlbum'] . '" ><p>' . $fila['Titulo'] . '</p></a></dt>';
-echo '<dd><p>' . $fila['Descripcion'] . '</p></dd>';
-echo '<dd><p>' . $fila['Fecha'] . '</p></dd>';
-echo '<dd><p>' . $fila['Pais'] . '</p></dd>';
+	echo '<dt><a href="veralbum.php?albumId=' . $fila['IdAlbum'] . '" ><p>' . $fila['Titulo'] . '</p></a></dt>';
+	echo '<dd><p>' . $fila['Descripcion'] . '</p></dd>';
+	echo '<dd><p>' . $fila['Fecha'] . '</p></dd>';
+
+	$sentencia = 'SELECT NomPais FROM paises WHERE IdPais=' . $fila['Pais'];
+	if(!($resultadoPais = @mysqli_query($link, $sentencia))) {
+		echo "<p>Error al ejecutar la sentencia <b>$sentencia</b>: " . mysqli_error($link);
+		echo '</p>';
+		exit;
+		while($filaP = mysqli_fetch_assoc($resultadoPais)){
+			echo '<dd><p>' . $fila['NomPais'] . '</p></dd>';
+		}
+	}
 }
 echo '</dl>';
 ?>
