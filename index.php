@@ -41,7 +41,7 @@ while($fila = mysqli_fetch_assoc($resultado)) {
 
 echo '<tr>';
 
-echo '<td>' . '<img src="' . $fila['Fichero'] . '_thumb.jpg' . '"' . '</td>';
+echo '<td>' . '<a href="detallefoto.php?foto='. $fila['IdFoto'] .'" > <img src="' . $fila['Fichero'] . '_thumb.jpg' . '"</img></a></td>';
 echo '<td>' . $fila['Titulo'] . '</td>';
 echo '<td>' . $fila['Fecha'] . '</td>';
 echo '<td>' . $fila['Pais'] . '</td>';
