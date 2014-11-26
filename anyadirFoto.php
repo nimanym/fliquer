@@ -31,11 +31,17 @@ echo '</p>';
 exit;
 }
 
+$sentencia2 = 'SELECT a.* FROM albumes a, usuarios u WHERE a.Usuario=u.IdUsuario AND u.NomUsuario="' . $_SESSION['nombreUsu'] . '"';
+if(!($resultado2 = @mysqli_query($link, $sentencia2))) {
+echo "<p>Error al ejecutar la sentencia <b>$sentencia</b>: " . mysqli_error($link);
+echo '</p>';
+exit;
+}
+
 ?>
 
-
 <form action="album.php" method="post" id="formularioFoto">
-	<h2>Crear un álbum</h2>
+	<h2>Añadir una foto</h2>
 	Título: <br><input required type="text" name="titulo" id="titulo"><br>
 	Descripción: <br><input required type="text" name="descripcion" id="descripcion"> <br>
 	Fecha: <br><input required type="text" name="fecha" id="fecha"><br>
@@ -45,8 +51,18 @@ exit;
 		while($nomPaises = mysqli_fetch_assoc($resultado)) {
 			echo '<option value="' . $nomPaises['NomPais'] . '">' . $nomPaises['NomPais'] . '</option>';
 		}?>
+	</select>
+	<br />
+
+	Album: <br><select name="albumes" id="albumes">
+		<?php
+		while($nomAlbumes = mysqli_fetch_assoc($resultado2)) {
+			echo '<option value="' . $nomAlbumes['IdPais'] . '">' . $nomAlbumes['Titulo'] . '</option>';
+		}?>
 	</select><br>
 	<br />
+
+
 	<input type="button" value="Enviar" onClick="enviar()" />
 </form>
 
