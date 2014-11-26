@@ -44,7 +44,19 @@ echo '<tr>';
 echo '<td>' . '<a href="detallefoto.php?foto='. $fila['IdFoto'] .'" > <img src="' . $fila['Fichero'] . '_thumb.jpg' . '"</img></a></td>';
 echo '<td>' . $fila['Titulo'] . '</td>';
 echo '<td>' . $fila['Fecha'] . '</td>';
-echo '<td>' . $fila['Pais'] . '</td>';
+
+if ($fila['Pais']!=''){
+		$sentencia = 'SELECT NomPais FROM paises WHERE IdPais=' . $fila['Pais'];
+		if(!($resultadoPais = @mysqli_query($link, $sentencia))) {
+			echo "<p>Error al ejecutar la sentencia <b>$sentencia</b>: " . mysqli_error($link);
+			echo '</p>';
+			exit;
+		}
+		while($filaP = mysqli_fetch_assoc($resultadoPais)){
+				echo '<td>' . $filaP['NomPais'] . '</td>';
+		}
+	}
+
 echo '<td>' . $fila['FRegistro'] . '</td>';
 echo '</tr>';
 }
