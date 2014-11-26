@@ -54,8 +54,9 @@ if ($fila['Pais']!=''){
 		}
 		while($filaP = mysqli_fetch_assoc($resultadoPais)){
 				echo '<td>' . $filaP['NomPais'] . '</td>';
-		}
 	}
+}
+else echo '<td></td>';
 
 echo '<td>' . $fila['FRegistro'] . '</td>';
 echo '</tr>';
