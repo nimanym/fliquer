@@ -15,14 +15,36 @@ Contraseña: <b><?php echo $_POST["password"];?></b>
 
 <?php
 
-$user1="Nima";
-$user2="Alberto";
+$user=$_POST["user"];
+$pass=$_POST["password"];
+
+// Conecta con el servidor de MySQL
+$link = @mysqli_connect(
+'localhost', // El servidor
+'root', // El usuario
+'', // La contraseña
+'pibd'); // La base de datos
+if(!$link) {
+	echo '<p>Error al conectar con la base de datos: ' . mysqli_connect_error();
+	echo '</p>';
+	exit;
+}
+
+$sentencia = 'SELECT Clave FROM usuarios WHERE NomUsuario = "' . $user .'"';
+
+if(!($resultado = @mysqli_query($link, $sentencia))) {
+echo "<p>Error al ejecutar la sentencia <b>$sentencia</b>: " . mysqli_error($link);
+echo '</p>';
+exit;
+}
 
 $host = $_SERVER['HTTP_HOST'];
 $uri = rtrim(dirname($_SERVER['PHP_SELF']), '/\\');
 
+$claves = mysqli_fetch_assoc($resultado);
 
-if($_POST['user'] == $user1||$_POST['user'] == $user2){
+if($pass == $claves['Clave']){
+
 	if($_POST["recordarLogin"]=="on"){
 		setcookie ('recordar',$_POST['user'], time() + 365 * 24 * 60 * 60);
 	}
@@ -45,8 +67,6 @@ else
 	header("Location: http://$host$uri/$extra");
 }
 exit;
-
-
 ?>
 
 </body>
