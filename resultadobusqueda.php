@@ -8,11 +8,9 @@ require_once("cabecera.inc");
 ?>
 
 <script src="ordenartabla.js"></script>
-<script src="cambioEstilos.js"></script>
-<script src="validacion.js"></script>
 
 <p>
-Se han encontrado 4 resultados con los siguientes criterios:
+Resultado de la búsqueda:
 </p>
 
 <p>
@@ -27,42 +25,63 @@ Fecha desde: <b><?php echo $_POST["desde"];?></b>
 País: <b><?php echo $_POST["pais"];?></b>
 </p>
 
-<table>
-  <thead>
-  <tr>
-    <th>Foto</th>
-    <th>Título</th>		
-    <th>Fecha</th>
-    <th>País</th>
-  </tr>
-  </thead>
-  <tbody>
-  <tr>
-    <td><img src="img/bear_thumb.jpg" alt="Un oso" style="width:256px;height:256px"></td>
-    <td>Oso</td>
-    <td>1992/02/09</td>		
-    <td>Noruega</td>
-  </tr>
-  <tr>
-    <td><img src="img/chick_thumb.jpg" alt="Un pollito" style="width:256px;height:256px"></td>
-    <td>Pollito</td>
-    <td>2012/12/19</td>
-    <td>China</td>
-  </tr>
-  <tr>
-    <td><img src="img/sunflower_thumb.jpg" alt="Un girasol" style="width:256px;height:256px"></td>
-    <td>Girasol</td>
-    <td>2002/10/10</td>
-    <td>Italia</td>
-  </tr>
-  <tr>
-    <td><img src="img/lincoln_thumb.jpg" alt="Abraham Lincoln" style="width:256px;height:256px"></td>
-    <td>Abraham Lincoln</td>
-    <td>1872/01/11</td>
-    <td>Estados Unidos</td>
-  </tr>
-</tbody>
-</table>
+<?php
+// Conecta con el servidor de MySQL
+$link = @mysqli_connect(
+'localhost', // El servidor
+'root', // El usuario
+'', // La contraseña
+'pibd'); // La base de datos
+if(!$link) {
+  echo '<p>Error al conectar con la base de datos: ' . mysqli_connect_error();
+  echo '</p>';
+  exit;
+}
+
+// Ejecuta una sentencia SQL 
+//$sentencia = "SELECT * FROM fotos WHERE titulo LIKE " . "'%" . $_POST['incluir'] . "%'" . " AND titulo";
+
+if($_POST['evitar'] == ""){
+
+  $sentencia = "SELECT * FROM fotos WHERE titulo LIKE '%" . $_POST['incluir'] . "%'";
+
+  //AND pais = $_POST['pais'];
+
+}else{
+
+  $sentencia = "SELECT * FROM fotos WHERE titulo LIKE '%" . $_POST['incluir'] . "%' AND titulo NOT LIKE '%" . $_POST['evitar'] . "%'";
+
+}
+
+if(!($resultado = @mysqli_query($link, $sentencia))) {
+echo "<p>Error al ejecutar la sentencia <b>$sentencia</b>: " . mysqli_error($link);
+echo '</p>';
+exit;
+}
+
+echo '<table style="margin: 0 auto;"><tr>';
+echo '<th>Ficher</th><th>Titulo</th><th>Fecha</th><th>Pais</th><th>FRegistro</th>';
+echo '</tr>';
+// Recorre el resultado y lo muestra en forma de tabla HTML
+while($fila = mysqli_fetch_assoc($resultado)) {
+
+echo '<tr>';
+
+echo '<td>' . '<a href="detallefoto.php?foto='. $fila['IdFoto'] .'" > <img src="' . $fila['Fichero'] . '_thumb.jpg' . '"</img></a></td>';
+echo '<td>' . $fila['Titulo'] . '</td>';
+echo '<td>' . $fila['Fecha'] . '</td>';
+echo '<td>' . $fila['Pais'] . '</td>';
+echo '<td>' . $fila['FRegistro'] . '</td>';
+echo '</tr>';
+}
+echo '</table>';
+
+// Libera la memoria ocupada por el resultado
+mysqli_free_result($resultado);
+// Cierra la conexión
+mysqli_close($link);
+
+?>
 
 <?php
 require_once("footer.inc");

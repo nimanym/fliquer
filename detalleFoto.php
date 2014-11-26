@@ -44,16 +44,7 @@ $nombre=$fila['Titulo'];
 $fecha=$fila['Fecha'];
 $pais=$fila['Pais'];
 $descripcion=$fila['Descripcion'];
-
-
-// Libera la memoria ocupada por el resultado
-mysqli_free_result($resultado);
-// Cierra la conexión
-mysqli_close($link);
-
 ?>
-
-
 
 
 <ul style="list-style-type:none">
@@ -66,5 +57,10 @@ mysqli_close($link);
 
 
 <?php
+// Libera la memoria ocupada por el resultado
+mysqli_free_result($resultado);
+// Cierra la conexión
+mysqli_close($link);
+
 require_once("footer.inc");
 ?>
