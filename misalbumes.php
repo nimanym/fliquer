@@ -35,12 +35,12 @@ echo '</p>';
 exit;
 }
 
-while($fila = mysqli_fetch_assoc($resultado)) {
 echo '<dl>';
+while($fila = mysqli_fetch_assoc($resultado)) {
 echo '<dt><a href="veralbum.php?albumId=' . $fila['IdAlbum'] . '" ><p>' . $fila['Titulo'] . '</p></a></dt>';
-echo '<dd><p>' . $fila['Descripcion'] . '</p><dd>';
-echo '<dd><p>' . $fila['Fecha'] . '</p><dd>';
-echo '<dd><p>' . $fila['Pais'] . '</p><dd>';
+echo '<dd><p>' . $fila['Descripcion'] . '</p></dd>';
+echo '<dd><p>' . $fila['Fecha'] . '</p></dd>';
+echo '<dd><p>' . $fila['Pais'] . '</p></dd>';
 }
 echo '</dl>';
 ?>
