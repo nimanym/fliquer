@@ -41,13 +41,15 @@ while($fila = mysqli_fetch_assoc($resultado)) {
 	echo '<dd><p>' . $fila['Descripcion'] . '</p></dd>';
 	echo '<dd><p>' . $fila['Fecha'] . '</p></dd>';
 
-	$sentencia = 'SELECT NomPais FROM paises WHERE IdPais=' . $fila['Pais'];
-	if(!($resultadoPais = @mysqli_query($link, $sentencia))) {
-		echo "<p>Error al ejecutar la sentencia <b>$sentencia</b>: " . mysqli_error($link);
-		echo '</p>';
-		exit;
-		while($filaP = mysqli_fetch_assoc($resultadoPais)){
-			echo '<dd><p>' . $fila['NomPais'] . '</p></dd>';
+	if ($fila['Pais']!=''){
+		$sentencia = 'SELECT NomPais FROM paises WHERE IdPais=' . $fila['Pais'];
+		if(!($resultadoPais = @mysqli_query($link, $sentencia))) {
+			echo "<p>Error al ejecutar la sentencia <b>$sentencia</b>: " . mysqli_error($link);
+			echo '</p>';
+			exit;
+			while($filaP = mysqli_fetch_assoc($resultadoPais)){
+				echo '<dd><p>' . $filaP['NomPais'] . '</p></dd>';
+			}
 		}
 	}
 }
