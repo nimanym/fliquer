@@ -47,9 +47,9 @@ while($fila = mysqli_fetch_assoc($resultado)) {
 			echo "<p>Error al ejecutar la sentencia <b>$sentencia</b>: " . mysqli_error($link);
 			echo '</p>';
 			exit;
-			while($filaP = mysqli_fetch_assoc($resultadoPais)){
+		}
+		while($filaP = mysqli_fetch_assoc($resultadoPais)){
 				echo '<dd><p>' . $filaP['NomPais'] . '</p></dd>';
-			}
 		}
 	}
 }
