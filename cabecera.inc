@@ -45,7 +45,18 @@
 <nav>
 	<ul id="navWrapper">
 		<li><a href="index.php">Fliquer</a></li>
-		<li><a href="nuevoUsuario.php">Nuevo usuario</a></li>
+
+		<?php
+			if(!isset($_SESSION['nombreUsu'])){
+
+			?>
+
+				<li><a href="nuevoUsuario.php">Nuevo usuario</a></li>
+
+			<?php
+				}
+			?>
+		
 		<li><a href="formulariobusqueda.php">Búsqueda</a></li>
 		<?php
 			if(isset($_SESSION['nombreUsu'])){
