@@ -5,9 +5,6 @@ $nombre = "Registro";
 
 require_once("cabecera.inc");
 
-?>
-
-<?php
 // Conecta con el servidor de MySQL
 $link = @mysqli_connect(
 'localhost', // El servidor
