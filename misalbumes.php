@@ -34,11 +34,14 @@ echo "<p>Error al ejecutar la sentencia <b>$sentencia</b>: " . mysqli_error($lin
 echo '</p>';
 exit;
 }
-?>
 
 while($fila = mysqli_fetch_assoc($resultado)) {
-echo '<p>' . $fila['Titulo'] . '</p>';
+echo '<a href="veralbum.php?albumId=' . $fila['IdAlbum'] . '" ><p>' . $fila['Titulo'] . '</p></a>';
 }
+
+?>
+
+
 
 
 <?php
