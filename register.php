@@ -18,16 +18,16 @@ die("Error: No existe la base de datos");
 
 
 
-$letrasynumeros = stripslashes("/^[0-9A-Za-z]+$/");
-$letrasynumerossub = stripslashes("/^[A-Za-z0-9_]+$/");
-$pass = stripslashes("/^(?=.*\d)(?=.*[a-z])(?=.*[A-Z]).{6,15}$/");
-$emailreg = stripslashes("/^\w+([\.-]?\w+)*@\w+([\.-]?\w+)*(\.\w{2,4})+$/");
-$nombreUsuario = stripslashes($_POST['nombreUsuario']);
-$password1 = stripslashes($_POST['password1']);
-$password2 = stripslashes($_POST['password2']);
-$email = stripslashes($_POST['email']);
-$sexo = stripslashes($_POST['sexo']);
-$fechaNacimiento=stripslashes($_POST['fechaNacimiento']);
+$letrasynumeros = ("/^[0-9A-Za-z]+$/");
+$letrasynumerossub = ("/^[A-Za-z0-9_]+$/");
+$pass = ("/^(?=.*\d)(?=.*[a-z])(?=.*[A-Z]).{6,15}$/");
+$emailreg = ("/^\w+([\.-]?\w+)*@\w+([\.-]?\w+)*(\.\w{2,4})+$/");
+$nombreUsuario = ($_POST['nombreUsuario']);
+$password1 = ($_POST['password1']);
+$password2 = ($_POST['password2']);
+$email = ($_POST['email']);
+$sexo = ($_POST['sexo']);
+$fechaNacimiento=($_POST['fechaNacimiento']);
 
 if (strcmp($sexo,"hombre"==0)){
 $genero=0;
@@ -38,13 +38,13 @@ $genero=1;
 
 $stamp = new DateTime();
 
-if(ereg($letrasynumeros, $nombreUsuario)&&!ctype_space ($nombreUsuario)&&$nombreUsuario!=""){
+if(preg_match($letrasynumeros, $nombreUsuario)&&!ctype_space ($nombreUsuario)&&$nombreUsuario!=""){
 	if(strlen($nombreUsuario)>=3&&strlen($nombreUsuario)<=15){
-		if(ereg($letrasynumerossub, $password1)&&!ctype_space ($password1)&&$password1!=""){
+		if(preg_match($letrasynumerossub, $password1)&&!ctype_space ($password1)&&$password1!=""){
 			if(strlen($password1)>=6&&strlen($password1)<=15){
 				if(strcmp($password1,$password2)==0){
-					if(ereg($pass, $password1)){
-						if(ereg($emailreg, $email)&&!ctype_space ($email)&&$email!=""){
+					if(preg_match($pass, $password1)){
+						if(preg_match($emailreg, $email)&&!ctype_space ($email)&&$email!=""){
 							if(!ctype_space ($sexo)&&$sexo!=""){
 								if($fechaNacimiento!="Invalid Date"){
 									$sentencia = "INSERT INTO usuarios VALUES (null, ". $nombreUsuario .", " . $password1. ", " . $email. ", " . $genero. ", " . $fechaNacimiento. ", " . "". ", " . $_POST['pais']. ", " . "". ", " . $fecha->getTimestamp() . ")";
