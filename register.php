@@ -50,7 +50,7 @@ if(ereg($letrasynumeros, $nombreUsuario)&&!ctype_space ($nombreUsuario)&&$nombre
 									$sentencia = "INSERT INTO usuarios VALUES (null, ". $nombreUsuario .", " . $password1. ", " . $email. ", " . $genero. ", " . $fechaNacimiento. ", " . "". ", " . $_POST['pais']. ", " . "". ", " . $fecha->getTimestamp() . ")";
 									if(!mysqli_query($iden, $sentencia))
 									die("Error: no se pudo realizar la inserción");
-									echo ’Se ha insertado un nuevo usuario en la base de datos’;
+									echo 'Se ha insertado un nuevo usuario en la base de datos';
 								}
 							}
 						}
