@@ -47,7 +47,7 @@ if(preg_match($letrasynumeros, $nombreUsuario)&&!ctype_space ($nombreUsuario)&&$
 						if(preg_match($emailreg, $email)&&!ctype_space ($email)&&$email!=""){
 							if(!ctype_space ($sexo)&&$sexo!=""){
 								if($fechaNacimiento!="Invalid Date"){
-									$sentencia = "INSERT INTO usuarios VALUES (null, ". $nombreUsuario .", " . $password1. ", " . $email. ", " . $genero. ", " . $fechaNacimiento. ", " . "". ", " . $_POST['pais']. ", " . "". ", " . $fecha->getTimestamp() . ")";
+									$sentencia = "INSERT INTO usuarios VALUES (null, ". $nombreUsuario .", " . $password1. ", " . $email. ", " . $genero. ", " . $fechaNacimiento. ", " . "". ", " . $_POST['pais']. ", " . "". ", " . $stamp->getTimestamp() . ")";
 									if(!mysqli_query($iden, $sentencia))
 									die("Error: no se pudo realizar la inserción");
 									echo 'Se ha insertado un nuevo usuario en la base de datos';
