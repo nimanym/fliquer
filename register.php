@@ -8,7 +8,7 @@
 </head>
 <body>
 <pre>
-	
+
 <?php
 
 if(!($iden = mysqli_connect("localhost", "root", "")))
@@ -18,10 +18,10 @@ die("Error: No existe la base de datos");
 
 
 
-$letrasynumeros = stripslashes(/^[0-9A-Za-z]+$/);
-$letrasynumerossub = stripslashes(/^[A-Za-z0-9_]+$/);
-$pass = stripslashes(/^(?=.*\d)(?=.*[a-z])(?=.*[A-Z]).{6,15}$/);
-$emailreg = stripslashes(/^\w+([\.-]?\w+)*@\w+([\.-]?\w+)*(\.\w{2,4})+$/);
+$letrasynumeros = stripslashes("/^[0-9A-Za-z]+$/");
+$letrasynumerossub = stripslashes("/^[A-Za-z0-9_]+$/");
+$pass = stripslashes("/^(?=.*\d)(?=.*[a-z])(?=.*[A-Z]).{6,15}$/");
+$emailreg = stripslashes("/^\w+([\.-]?\w+)*@\w+([\.-]?\w+)*(\.\w{2,4})+$/");
 $nombreUsuario = stripslashes($_POST['nombreUsuario']);
 $password1 = stripslashes($_POST['password1']);
 $password2 = stripslashes($_POST['password2']);
