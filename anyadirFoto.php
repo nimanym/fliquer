@@ -69,5 +69,11 @@ exit;
 
 
 <?php
+
+// Libera la memoria ocupada por el resultado
+mysqli_free_result($resultado);
+// Cierra la conexión
+mysqli_close($link);
+
 require_once("footer.inc");
 ?>

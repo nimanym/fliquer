@@ -11,9 +11,9 @@ if(!isset($_SESSION['nombreUsu'])){
 
 ?>
 
-<h2> <?php echo $_SESSION['nombreUsu'] ?></h2>
+<h2>Perfil</h2>
 
-<p>Mis datos</p>
+<p><a href="datosUsuario.php">Mis datos</a></p>
 <p>Darme de baja</p>
 <p><a href="misalbumes.php">Mis álbumes</a></p>
 <p><a href="crearalbum.php">Crear álbum</a></p>
