@@ -32,14 +32,14 @@ exit;
 // Recorre el resultado y lo muestra en forma de tabla HTML
 while($fila = mysqli_fetch_assoc($resultado)) {
 
-	echo '<h2>' . 'Datos de ' .  $fila['NomUsuario'] . '</h2>';
+	echo '<h2>' . 'Dar de baja a ' .  $fila['NomUsuario'] . '</h2>';
 
 }
 
 ?>
 
 <br />
-<p><a onClick="if(avisoBorrado()==false)return false;" href="respuestaBorrado.php">BORRAR USUARIO</a></p>
+<p><a onClick="if(avisoBorrado()==false)return false;" href="respuestaDarBajaUsuario.php">BORRAR USUARIO</a></p>
 <br />
 
 <?php

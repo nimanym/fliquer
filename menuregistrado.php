@@ -14,7 +14,7 @@ if(!isset($_SESSION['nombreUsu'])){
 <h2>Perfil</h2>
 
 <p><a href="datosUsuario.php">Mis datos</a></p>
-<p>Darme de baja</p>
+<p><a href="darBajaUsuario.php">Darme de baja</a></p>
 <p><a href="misalbumes.php">Mis álbumes</a></p>
 <p><a href="crearalbum.php">Crear álbum</a></p>
 <p><a href="anyadirFoto.php">Añadir foto al álbum</p>

@@ -17,7 +17,7 @@ if(!mysqli_select_db($iden, "pibd"))
 die("Error: No existe la base de datos");
 // Sentencia SQL: inserta un nuevo libro
 
-$sentencia = 'DELETE FROM usuarios WHERE NomUsuario="' . $_POST["nombreUsuario"] . '"';
+$sentencia = 'DELETE FROM usuarios WHERE NomUsuario="' . $_SESSION['nombreUsu'] . '"';
 // Ejecuta la sentencia SQL
 
 if(!mysqli_query($iden, $sentencia))
@@ -42,8 +42,10 @@ setcookie(session_name(), '', time() - 42000, '/');
 session_destroy();
 
 ?>
-
+<p>
 <input type="button" value="Volver" onclick=" location.href='index.php' " />
+</p>
 
-</body>
-</html>
+<?php
+require_once("footer.inc");
+?>

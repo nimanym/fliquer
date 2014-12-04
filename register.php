@@ -79,5 +79,8 @@ Fecha de nacimiento: <b><?php echo $_POST["fechaNacimiento"];?></b>
 Sexo: <b><?php echo $_POST["sexo"];?></b>
 </p>
 <input type="button" value="Volver" onclick=" location.href='index.php' " />
-</body>
-</html>
+</p>
+
+<?php
+require_once("footer.inc");
+?>
