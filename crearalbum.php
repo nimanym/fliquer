@@ -42,7 +42,7 @@ exit;
 	<h2>Crear un álbum</h2>
 	Título: <br><input required type="text" name="titulo" id="titulo"><br>
 	Descripción: <br><input required type="text" name="descripcion" id="descripcion"> <br>
-	Fecha: <br><input required type="text" name="fecha" id="fecha"><br>
+	Fecha: <br><input required type="date" name="fecha" id="fecha"><br>
 	Pais: <br><select name="pais" id="pais">  
        <option value="" selected="selected"></option>
 		<?php
