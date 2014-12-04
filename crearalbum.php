@@ -51,7 +51,7 @@ exit;
 		}?>
 	</select><br>
 	<br />
-	<input type="button" value="Enviar" onClick="enviar()" />
+	<input type="button" value="Enviar" onClick="submit()" />
 </form>
 
 <?php
