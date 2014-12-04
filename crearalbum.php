@@ -38,7 +38,7 @@ exit;
 ?>
 
 
-<form action="album.php" method="post" id="formularioAlbum">
+<form action="crearalbum.php" method="post" id="formularioAlbum">
 	<h2>Crear un álbum</h2>
 	Título: <br><input required type="text" name="titulo" id="titulo"><br>
 	Descripción: <br><input required type="text" name="descripcion" id="descripcion"> <br>
