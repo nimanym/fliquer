@@ -38,8 +38,6 @@ echo 'Se han modificado los siguientes datos';
 // Cierra la conexión con la base de datos
 mysqli_close($iden);
 
-
-
 ?>
 
 <p>
@@ -58,9 +56,7 @@ Sexo: <b><?php echo $_POST["sexo"];?></b>
 Pais: <b><?php echo $_POST["pais"];?></b>
 </p>
 
-
 <?php
-
 
 unset($_COOKIE["recordar"]); 
 setcookie("recordar","",time()-3600);

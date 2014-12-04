@@ -21,6 +21,54 @@ if(!$link) {
 	exit;
 }
 
+
+
+
+// Ejecuta una sentencia SQL
+$sentencia = 'SELECT * FROM usuarios WHERE usuarios.NomUsuario = "' . $_SESSION['nombreUsu'] . '"';
+if(!($resultado = @mysqli_query($link, $sentencia))) {
+echo "<p>Error al ejecutar la sentencia <b>$sentencia</b>: " . mysqli_error($link);
+echo '</p>';
+exit;
+}
+
+// Recorre el resultado y lo muestra en forma de tabla HTML
+while($fila = mysqli_fetch_assoc($resultado)) {
+
+	echo '<h2>' . 'Datos de ' .  $fila['NomUsuario'] . '</h2>';
+
+	echo '<p>' . 'Nombre de usuario: ' .  $fila['NomUsuario'] . '</p>';
+	echo '<p>' . 'Contraseña: ' .  $fila['Clave'] . '</p>';
+	echo '<p>' . 'Email: ' .  $fila['Email'] . '</p>';
+
+	if($fila['Sexo'] == 0){
+		echo '<p>' . 'Sexo: Hombre' . '</p>';
+	}else{
+		echo '<p>' . 'Sexo: Mujer' . '</p>';
+	}
+
+	echo '<p>' . 'Fecha de nacimiento: ' .  $fila['FNacimiento'] . '</p>';
+	if($fila['Ciudad'] != ''){
+		echo '<p>' . 'Ciudad: ' .  $fila['Ciudad'] . '</p>';
+	}
+
+	if ($fila['Pais']!=''){
+		$sentencia = 'SELECT NomPais FROM paises WHERE IdPais=' . $fila['Pais'];
+		if(!($resultadoPais = @mysqli_query($link, $sentencia))) {
+			echo "<p>Error al ejecutar la sentencia <b>$sentencia</b>: " . mysqli_error($link);
+			echo '</p>';
+			exit;
+		}
+		while($filaP = mysqli_fetch_assoc($resultadoPais)){
+			echo '<p>' . 'Pais: ' . $filaP['NomPais'] . '</p>';
+		}
+	}
+
+	echo '<p>' . 'Fecha de registro: ' .  $fila['FRegistro'] . '</p>';
+}
+
+
+
 // Ejecuta una sentencia SQL
 $sentencia = 'SELECT NomPais FROM paises';
 if(!($resultado = @mysqli_query($link, $sentencia))) {
@@ -60,9 +108,7 @@ if(!($resultado = @mysqli_query($link, $sentencia))) {
 	<input type="button" value="Enviar" onClick="enviarCambioDatos()" />
 </form>
 
-<br />
 <p><a onClick="if(aviso()==false)return false;" href="menuregistrado.php">Volver</a></p>
-<br />
 
 
 <?php

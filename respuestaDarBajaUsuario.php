@@ -22,7 +22,7 @@ $sentencia = 'DELETE FROM usuarios WHERE NomUsuario="' . $_SESSION['nombreUsu'] 
 
 if(!mysqli_query($iden, $sentencia))
 die("Error: no se pudo realizar el borrado");
-echo 'Se borrado tu usuario.';
+echo 'Se ha borrado tu usuario.';
 // Cierra la conexión con la base de datos
 mysqli_close($iden);
 
