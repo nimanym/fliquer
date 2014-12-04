@@ -54,7 +54,15 @@ exit;
 	<input type="button" value="Enviar" onClick="enviar()" />
 </form>
 
+<?php
+if(isset($_POST['titulo'])){
+	$sentencia = "INSERT INTO albumes VALUES (NULL, '". $_POST['titulo'] ."', '" . $_POST['descripcion']. "', '" . $_POST['fecha']. "', '" . $_POST['pais']. "', '1')";
+	if(!mysqli_query($iden, $sentencia))
+	die("Error: no se pudo realizar la inserción");
+	echo 'Se ha insertado un nuevo album en la base de datos';
+}
 
+?>
 
 <?php
 require_once("footer.inc");
