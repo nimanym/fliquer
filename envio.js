@@ -153,6 +153,16 @@ function aviso() {
     }
 }
 
+function avisoBorrado() {
+
+    var r = confirm("¡ATENCIÓN!\nTu cuenta será eliminada PERMANENTEMENTE. \n\n¿Estás seguro?");
+    if (r == true) {
+        return true;
+    } else {
+        return false;
+    }
+}
+
 function enviarCambioDatos() {
 
     var nombreUsuario = document.getElementById("nombreUsuario").value;
