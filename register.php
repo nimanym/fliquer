@@ -1,12 +1,11 @@
-<?xml version="1.0" encoding="iso-8859-1"?>
-<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Strict//EN"
-"http://www.w3.org/TR/xhtml1/DTD/xhtml1-strict.dtd">
-<html xmlns="http://www.w3.org/1999/xhtml" xml:lang="es" lang="es">
-<head>
-<meta http-equiv="Content-Type" content="text/html; charset=iso-8859-1" />
-<title>Respuesta formulario</title>
-</head>
-<body>
+<?php
+// Título de la página, se muestra en <title> y en el cuerpo de la página con <h2>
+$title = "Modificar datos - Fliquer";
+$nombre = "Modificar datos";
+
+require_once("cabecera.inc");
+?>
+
 <pre>
 
 <?php
@@ -15,8 +14,6 @@ if(!($iden = mysqli_connect("localhost", "root", "")))
 die("Error: No se pudo conectar");
 if(!mysqli_select_db($iden, "pibd"))
 die("Error: No existe la base de datos");
-
-
 
 $letrasynumeros = ("/^[0-9A-Za-z]+$/");
 $letrasynumerossub = ("/^[A-Za-z0-9_]+$/");
@@ -47,11 +44,12 @@ if(preg_match($letrasynumeros, $nombreUsuario)&&!ctype_space ($nombreUsuario)&&$
 						if(preg_match($emailreg, $email)&&!ctype_space ($email)&&$email!=""){
 							if(!ctype_space ($sexo)&&$sexo!=""){
 								if($fechaNacimiento!="Invalid Date"){
-									$sentencia = "INSERT INTO usuarios VALUES (null, ". $nombreUsuario .", " . $password1. ", " . $email. ", " . $genero. ", " . $fechaNacimiento. ", " . "". ", " . $_POST['pais']. ", " . "". ", " . $stamp->getTimestamp() . ")";
-									echo $sentencia;
+									$sentencia = "INSERT INTO usuarios VALUES (NULL, '". $nombreUsuario ."', '" . $password1. "', '" . $email. "', '" . $genero. "', '" . $fechaNacimiento. "',  '', '1', '/fotoE', '" . $stamp->getTimestamp() . "')";
+									
 									if(!mysqli_query($iden, $sentencia))
 									die("Error: no se pudo realizar la inserción");
 									echo 'Se ha insertado un nuevo usuario en la base de datos';
+
 								}
 							}
 						}
@@ -80,5 +78,6 @@ Fecha de nacimiento: <b><?php echo $_POST["fechaNacimiento"];?></b>
 <br />
 Sexo: <b><?php echo $_POST["sexo"];?></b>
 </p>
+<input type="button" value="Volver" onclick=" location.href='index.php' " />
 </body>
 </html>
