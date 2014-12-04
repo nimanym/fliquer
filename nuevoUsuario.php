@@ -5,6 +5,10 @@ $nombre = "Registro";
 
 require_once("cabecera.inc");
 
+if(isset($_SESSION['nombreUsu'])){
+	header('Location: index.php');
+}
+
 // Conecta con el servidor de MySQL
 $link = @mysqli_connect(
 'localhost', // El servidor
