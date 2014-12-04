@@ -40,7 +40,7 @@ exit;
 
 ?>
 
-<form action="album.php" method="post" id="formularioFoto">
+<form action="anyadirFoto.php" method="post" id="formularioFoto">
 	<h2>Añadir una foto</h2>
 	Título: <br><input required type="text" name="titulo" id="titulo"><br>
 	Descripción: <br><input required type="text" name="descripcion" id="descripcion"> <br>
