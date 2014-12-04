@@ -63,12 +63,20 @@ exit;
 	<br />
 
 
-	<input type="button" value="Enviar" onClick="enviar()" />
+	<input type="button" value="Enviar" onClick="submit()" />
 </form>
 
 
 
 <?php
+
+if(isset($_POST['titulo'])){
+	$sentencia = "INSERT INTO fotos VALUES (NULL, '". $_POST['titulo'] ."', '" . $_POST['descripcion']. "', '" . $_POST['fecha']. "', '" . $_POST['pais']. "', '1')";
+	if(!mysqli_query($link, $sentencia))
+	die("Error: no se pudo realizar la inserción");
+	echo 'Se ha insertado una nueva foto en la base de datos';
+}
+
 
 // Libera la memoria ocupada por el resultado
 mysqli_free_result($resultado);
