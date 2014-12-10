@@ -97,7 +97,7 @@ if(preg_match($letrasynumeros, $nombreUsuario)&&!ctype_space ($nombreUsuario)&&$
 						if(preg_match($emailreg, $email)&&!ctype_space ($email)&&$email!=""){
 							if(!ctype_space ($sexo)&&$sexo!=""){
 								if($fechaNacimiento!="Invalid Date"){
-									$sentencia = "INSERT INTO usuarios VALUES (NULL, '". $nombreUsuario ."', '" . $password1. "', '" . $email. "', '" . $genero. "', '" . $fechaNacimiento. "',  '" . $paisId . "', '1', '/fotoE', '" . $stamp->getTimestamp() . "')";
+									$sentencia = "INSERT INTO usuarios VALUES (NULL, '". $nombreUsuario ."', '" . $password1. "', '" . $email. "', '" . $genero. "', '" . $fechaNacimiento. "',  '', '" . $paisId . "', '/fotoE', '" . $stamp->getTimestamp() . "')";
 									
 
 
