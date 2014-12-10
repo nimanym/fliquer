@@ -46,13 +46,13 @@ if($_FILES["fichero"]["error"]){
 }
 else
 {
-	if(move_uploaded_file($_FILES["fichero"]["tmp_name"], "C:\\xampp\\htdocs\\fliquer\\img\\fotosUsuarios" . $_FILES["fichero"]["name"]))
+	if(move_uploaded_file($_FILES["fichero"]["tmp_name"], "C:\\xampp\\htdocs\\fliquer\\img\\fotosUsuarios\\" . rand() . $_FILES["fichero"]["name"] ))
 	{
-		echo "Se ha subido bien: " . $_FILES["fichero"]["error"];
+		//echo "Se ha subido bien: " . $_FILES["fichero"]["error"];
 	}
 	else
 	{
-		echo "NO se ha subido bien: " . $_FILES["fichero"]["error"];
+		//echo "NO se ha subido bien: " . $_FILES["fichero"]["error"];
 	}
 }
 
