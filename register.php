@@ -28,7 +28,7 @@ $fechaNacimiento=($_POST['fechaNacimiento']);
 $paisNombre = ($_POST['pais']);
 
 if ($paisNombre!=''){
-		$sentencia = 'SELECT IdPais FROM paises WHERE NomPais=' . $paisNombre;
+		$sentencia = 'SELECT IdPais FROM paises WHERE NomPais="' . $paisNombre . '"';
 		if(!($resultadoPais = @mysqli_query($iden, $sentencia))) {
 			echo "<p>Error al ejecutar la sentencia <b>$sentencia</b>: " . mysqli_error($iden);
 			echo '</p>';
