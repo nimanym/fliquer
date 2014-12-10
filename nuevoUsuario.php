@@ -30,7 +30,7 @@ exit;
 
 ?>
 
-<form action="register.php" method="post" id="formularioRegistro">
+<form action="register.php" method="post" id="formularioRegistro" enctype="multipart/form-data" >
 	<h2>Registrarse</h2>
 	Nombre de usuario: <br><input required type="text" name="nombreUsuario" id="nombreUsuario"><br>
 	Contraseña: <br><input required type="password" name="password1" id="password1"> <br>
@@ -56,6 +56,9 @@ exit;
 	Sexo: <br />
 	<input type="radio" checked name="sexo" value="hombre" id="sexoHombre">Hombre<br>
 	<input type="radio" name="sexo" value="mujer" id="sexoMujer">Mujer<br>
+
+	<br>
+	Foto: <input type="file" name="fichero" /><br>
 
 	<br />
 	<input type="button" value="Enviar" onClick="enviarRegistro()" />
