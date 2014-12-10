@@ -79,8 +79,7 @@ else
 	}
 	else
 	{
-		move_uploaded_file($_FILES["fichero"]["tmp_name"],
-		"upload/" . $_FILES["fichero"]["name"]);
+		move_uploaded_file($_FILES["fichero"]["tmp_name"], "upload/" . $_FILES["fichero"]["name"]);
 		echo "Almacenado en: " . "upload/" . $_FILES["fichero"]["name"];
 		echo "<br />";
 	}
