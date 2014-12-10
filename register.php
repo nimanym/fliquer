@@ -25,6 +25,20 @@ $password2 = ($_POST['password2']);
 $email = ($_POST['email']);
 $sexo = ($_POST['sexo']);
 $fechaNacimiento=($_POST['fechaNacimiento']);
+$paisNombre = ($_POST['pais']);
+
+if ($paisNombre!=''){
+		$sentencia = 'SELECT IdPais FROM paises WHERE NomPais=' . $paisNombre;
+		if(!($resultadoPais = @mysqli_query($link, $sentencia))) {
+			echo "<p>Error al ejecutar la sentencia <b>$sentencia</b>: " . mysqli_error($link);
+			echo '</p>';
+			exit;
+		}
+		while($filaP = mysqli_fetch_assoc($resultadoPais)){
+				$paisId=$filaP['IdPais'];
+	}
+}
+
 
 if (strcmp($sexo,"hombre"==0)){
 $genero=0;
@@ -82,7 +96,7 @@ if(preg_match($letrasynumeros, $nombreUsuario)&&!ctype_space ($nombreUsuario)&&$
 						if(preg_match($emailreg, $email)&&!ctype_space ($email)&&$email!=""){
 							if(!ctype_space ($sexo)&&$sexo!=""){
 								if($fechaNacimiento!="Invalid Date"){
-									$sentencia = "INSERT INTO usuarios VALUES (NULL, '". $nombreUsuario ."', '" . $password1. "', '" . $email. "', '" . $genero. "', '" . $fechaNacimiento. "',  '', '1', '/fotoE', '" . $stamp->getTimestamp() . "')";
+									$sentencia = "INSERT INTO usuarios VALUES (NULL, '". $nombreUsuario ."', '" . $password1. "', '" . $email. "', '" . $genero. "', '" . $fechaNacimiento. "',  '" . $paisId . "', '1', '/fotoE', '" . $stamp->getTimestamp() . "')";
 									
 
 
