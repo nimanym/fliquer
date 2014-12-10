@@ -27,6 +27,7 @@ $sexo = ($_POST['sexo']);
 $fechaNacimiento=($_POST['fechaNacimiento']);
 $ciudad = ($_POST['ciudad']);
 $paisNombre = ($_POST['pais']);
+$paisId="";
 
 if ($paisNombre!=''){
 		$sentencia = 'SELECT IdPais FROM paises WHERE NomPais="' . $paisNombre . '"';

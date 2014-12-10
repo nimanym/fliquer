@@ -86,6 +86,7 @@ if(!($resultado = @mysqli_query($link, $sentencia))) {
 	Verificar contraseña: <br><input required type="password" name="password2" id="password2"><br>
 	E-mail: <br><input required type="email" name="email" id="email"><br>
 	Fecha de nacimiento: <br><input required type="date" name="fechaNacimiento" id="fechaNacimiento"><br>
+	Ciudad: <br><input type="text" name="ciudad" id="ciudad"><br>
 	Pais: <br>
 
 	<select name="pais" id="pais">  
