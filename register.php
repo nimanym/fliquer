@@ -41,6 +41,8 @@ if ($paisNombre!=''){
 	}
 }
 
+
+
 if($_FILES["fichero"]["error"]){
 	echo "ERROR: " . $_FILES["fichero"]["error"];
 }
@@ -55,6 +57,8 @@ else
 		//echo "NO se ha subido bien: " . $_FILES["fichero"]["error"];
 	}
 }
+
+
 
 if (strcmp($sexo,"hombre"==0)){
 $genero=0;
