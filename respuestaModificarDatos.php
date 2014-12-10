@@ -43,11 +43,11 @@ if ($_POST["pais"]!=''){
 }
 
 
-$sentencia = 'UPDATE usuarios SET NomUsuario="' . $_POST["nombreUsuario"] . '", Clave="' . $_POST["password1"] . '", Email="' . $_POST["email"] . '", Sexo="' . $sexo . '", FNacimiento="' . $_POST["fechaNacimiento"] . '", Ciudad="' . $_POST["ciudad"] . '" Pais="' . $paisId . '" WHERE usuarios.NomUsuario="' . $_SESSION['nombreUsu'] . '"';
+$sentencia = 'UPDATE usuarios SET NomUsuario="' . $_POST["nombreUsuario"] . '", Clave="' . $_POST["password1"] . '", Email="' . $_POST["email"] . '", Sexo="' . $sexo . '", FNacimiento="' . $_POST["fechaNacimiento"] . '", Ciudad="' . $_POST["ciudad"] . '", Pais="' . $paisId . '" WHERE usuarios.NomUsuario="' . $_SESSION['nombreUsu'] . '"';
 // Ejecuta la sentencia SQL
 
 if(!mysqli_query($iden, $sentencia))
-die("Error: no se pudo realizar la modificación. Error al ejecutar la sentencia <b>$sentencia</b>");
+die("Error: no se pudo realizar la modificación.");
 echo 'Se han modificado correctamente tus datos';
 // Cierra la conexión con la base de datos
 mysqli_close($iden);
