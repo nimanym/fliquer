@@ -46,7 +46,14 @@ if($_FILES["fichero"]["error"]){
 }
 else
 {
-	echo "Se ha subido bien: " . $_FILES["fichero"]["error"];
+	if(move_uploaded_file($_FILES["fichero"]["tmp_name"], "C:\\xampp\\htdocs\\fliquer\\img\\fotosUsuarios" . $_FILES["fichero"]["name"]))
+	{
+		echo "Se ha subido bien: " . $_FILES["fichero"]["error"];
+	}
+	else
+	{
+		echo "NO se ha subido bien: " . $_FILES["fichero"]["error"];
+	}
 }
 
 if (strcmp($sexo,"hombre"==0)){
