@@ -38,7 +38,7 @@ while($fila = mysqli_fetch_assoc($resultado)) {
 	echo '<h2>' . 'Datos de ' .  $fila['NomUsuario'] . '</h2>';
 
 	echo '<p>' . 'Nombre de usuario: ' .  $fila['NomUsuario'] . '</p>';
-	echo '<p>' . 'Contraseña: ' .  $fila['Clave'] . '</p>';
+	echo '<p>' . 'Contraseña: ******** </p>';
 	echo '<p>' . 'Email: ' .  $fila['Email'] . '</p>';
 
 	if($fila['Sexo'] == 0){
