@@ -48,29 +48,9 @@ $sentencia = 'UPDATE usuarios SET NomUsuario="' . $_POST["nombreUsuario"] . '", 
 
 if(!mysqli_query($iden, $sentencia))
 die("Error: no se pudo realizar la inserción");
-echo 'Se han modificado los siguientes datos';
+echo 'Se han modificado correctamente tus datos';
 // Cierra la conexión con la base de datos
 mysqli_close($iden);
-
-?>
-
-<p>
-Nombre de usuario: <b><?php echo $_POST["nombreUsuario"];?></b>
-<br />
-Contraseña: <b><?php echo $_POST["password1"];?></b>
-<br />
-Verificar contraseña: <b><?php echo $_POST["password2"];?></b>
-<br />
-E-mail: <b><?php echo $_POST["email"];?></b>
-<br />
-Fecha de nacimiento: <b><?php echo $_POST["fechaNacimiento"];?></b>
-<br />
-Sexo: <b><?php echo $_POST["sexo"];?></b>
-<br />
-Pais: <b><?php echo $_POST["pais"];?></b>
-</p>
-
-<?php
 
 unset($_COOKIE["recordar"]); 
 setcookie("recordar","",time()-3600);
