@@ -25,6 +25,7 @@ $password2 = ($_POST['password2']);
 $email = ($_POST['email']);
 $sexo = ($_POST['sexo']);
 $fechaNacimiento=($_POST['fechaNacimiento']);
+$ciudad = ($_POST['ciudad']);
 $paisNombre = ($_POST['pais']);
 
 if ($paisNombre!=''){
@@ -47,7 +48,7 @@ else if (strcmp($sexo,"mujer"==0)){
 $genero=1;	
 }
 
-$stamp = new DateTime();
+$stamp = date("Y-m-d H:i:s");
 
 
 /////////////////////////////////FICHEROS
@@ -96,7 +97,7 @@ if(preg_match($letrasynumeros, $nombreUsuario)&&!ctype_space ($nombreUsuario)&&$
 						if(preg_match($emailreg, $email)&&!ctype_space ($email)&&$email!=""){
 							if(!ctype_space ($sexo)&&$sexo!=""){
 								if($fechaNacimiento!="Invalid Date"){
-									$sentencia = "INSERT INTO usuarios VALUES (NULL, '". $nombreUsuario ."', '" . $password1. "', '" . $email. "', '" . $genero. "', '" . $fechaNacimiento. "',  '', '" . $paisId . "', '/fotoE', '" . $stamp->getTimestamp() . "')";
+									$sentencia = "INSERT INTO usuarios VALUES (NULL, '". $nombreUsuario ."', '" . $password1. "', '" . $email. "', '" . $genero. "', '" . $fechaNacimiento. "',  '" . $ciudad . "', '" . $paisId . "', '/fotoE', '" . $stamp . "')";
 									
 
 
