@@ -80,7 +80,7 @@ if(preg_match($letrasynumeros, $nombreUsuario)&&!ctype_space ($nombreUsuario)&&$
 									}else{
 
 
-										echo 'Se ha insertado un nuevo usuario en la base de datos';
+										echo 'Felicidades! Te has registrado en Fliquer!';
 
 
 										$ruta = $_POST['fotosUsuarios']; // $serv . "index.php";
@@ -160,19 +160,6 @@ mysqli_close($iden);
 ?>
 
 </pre>
-<p>
-Nombre de usuario: <b><?php echo $_POST["nombreUsuario"];?></b>
-<br />
-Contraseña: <b><?php echo $_POST["password1"];?></b>
-<br />
-Verificar contraseña: <b><?php echo $_POST["password2"];?></b>
-<br />
-E-mail: <b><?php echo $_POST["email"];?></b>
-<br />
-Fecha de nacimiento: <b><?php echo $_POST["fechaNacimiento"];?></b>
-<br />
-Sexo: <b><?php echo $_POST["sexo"];?></b>
-</p>
 <input type="button" value="Volver" onclick=" location.href='index.php' " />
 </p>
 
