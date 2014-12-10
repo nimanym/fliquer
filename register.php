@@ -40,6 +40,13 @@ if ($paisNombre!=''){
 	}
 }
 
+if($_FILES["fichero"]["error"]){
+	echo "ERROR: " . $_FILES["fichero"]["error"];
+}
+else
+{
+	echo "Se ha subido bien: " . $_FILES["fichero"]["error"];
+}
 
 if (strcmp($sexo,"hombre"==0)){
 $genero=0;
@@ -49,17 +56,6 @@ $genero=1;
 }
 
 $stamp = date("Y-m-d H:i:s");
-
-
-/////////////////////////////////FICHEROS
-
-
-
-
-
-
-/////////////////////////////////////////////////////
-
 
 if(preg_match($letrasynumeros, $nombreUsuario)&&!ctype_space ($nombreUsuario)&&$nombreUsuario!=""){
 	if(strlen($nombreUsuario)>=3&&strlen($nombreUsuario)<=15){
@@ -72,79 +68,11 @@ if(preg_match($letrasynumeros, $nombreUsuario)&&!ctype_space ($nombreUsuario)&&$
 								if($fechaNacimiento!="Invalid Date"){
 									$sentencia = "INSERT INTO usuarios VALUES (NULL, '". $nombreUsuario ."', '" . $password1. "', '" . $email. "', '" . $genero. "', '" . $fechaNacimiento. "',  '" . $ciudad . "', '" . $paisId . "', '/fotoE', '" . $stamp . "')";
 									
-
-
-
 									if(!mysqli_query($iden, $sentencia)){
 										die("Error: no se pudo realizar la inserción");
 									}else{
-
-
 										echo 'Se ha insertado un nuevo usuario en la base de datos';
-
-
-										$ruta = $_POST['fotosUsuarios']; // $serv . "index.php";
-
-										if($ruta==trim("")){
-											$mensaje = "<font color='#990000'>Ingrese un nombre de directorio</font>";
-										} else {
-											if(isset($ruta)){
-												$ruta=str_replace(" ","_",$ruta); // reemplazamos los espacios vacios por guion bajo
-												
-												if(!file_exists($ruta))
-												{
-													mkdir ($ruta);
-													$mensaje = "Se ha creado el directorio:<br /><b>$ruta</b>";
-												} else {
-													$mensaje = "<font color='#FF0000'>la ruta:<br /><b>" . $ruta . "</b><br />Ya existe </font>";
-												}
-											}
-										}
-
-
-										$msgError = array(0 => "No hay error, el fichero se subió con éxito",
-															1 => "El tamaño del fichero supera la directiva
-															upload_max_filesize el php.ini",
-															2 => "El tamaño del fichero supera la directiva
-															MAX_FILE_SIZE especificada en el formulario HTML",
-															3 => "El fichero fue parcialmente subido",
-															4 => "No se ha subido un fichero",
-															6 => "No existe un directorio temporal",
-															7 => "Fallo al escribir el fichero al disco",
-															8 => "La subida del fichero fue detenida por la extensión");
-
-										if($_FILES["fichero"]["error"] > 0)
-										{
-											echo "Error: " . $msgError[$_FILES["fichero"]["error"]] . "<br />";
-										}
-										else
-										{
-											echo "Nombre original: " . $_FILES["fichero"]["name"] . "<br />";
-											echo "Tipo: " . $_FILES["fichero"]["type"] . "<br />";
-											echo "Tamaño: " . ceil($_FILES["fichero"]["size"] / 1024) . " Kb<br />";
-											echo "Nombre temporal: " . $_FILES["fichero"]["tmp_name"] . "<br />";
-											
-											if(file_exists($ruta . $_FILES["fichero"]["name"]))
-											{
-												echo $_FILES["fichero"]["name"] . " ya existe";
-											}
-											else
-											{
-												move_uploaded_file($_FILES["fichero"]["tmp_name"], $ruta . $_FILES["fichero"]["name"]);
-												echo "Almacenado en: " . $ruta . $_FILES["fichero"]["name"];
-												echo "<br />";
-											}
-										}
-
-
-
-
-
-
-
 									}
-
-
 								}
 							}
 						}
