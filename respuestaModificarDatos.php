@@ -29,7 +29,21 @@ die("Error: No existe la base de datos");
 		$sexo = 1;;
 	}
 
-$sentencia = 'UPDATE usuarios SET NomUsuario="' . $_POST["nombreUsuario"] . '", Clave="' . $_POST["password1"] . '", Email="' . $_POST["email"] . '", Sexo="' . $sexo . '", FNacimiento="' . $_POST["fechaNacimiento"] . '", Pais="1" WHERE usuarios.NomUsuario="' . $_SESSION['nombreUsu'] . '"';
+$paisId="";
+if ($_POST["pais"]!=''){
+		$sentencia = 'SELECT IdPais FROM paises WHERE NomPais="' . $_POST["pais"] . '"';
+		if(!($resultadoPais = @mysqli_query($iden, $sentencia))) {
+			echo "<p>Error al ejecutar la sentencia <b>$sentencia</b>: " . mysqli_error($iden);
+			echo '</p>';
+			exit;
+		}
+		while($filaP = mysqli_fetch_assoc($resultadoPais)){
+				$paisId=$filaP['IdPais'];
+	}
+}
+
+
+$sentencia = 'UPDATE usuarios SET NomUsuario="' . $_POST["nombreUsuario"] . '", Clave="' . $_POST["password1"] . '", Email="' . $_POST["email"] . '", Sexo="' . $sexo . '", FNacimiento="' . $_POST["fechaNacimiento"] . '", Ciudad="' . $_POST["ciudad"] . '" Pais="' . $paisId . '" WHERE usuarios.NomUsuario="' . $_SESSION['nombreUsu'] . '"';
 // Ejecuta la sentencia SQL
 
 if(!mysqli_query($iden, $sentencia))
