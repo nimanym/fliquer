@@ -92,7 +92,7 @@ else
 				$ficheroSelec=$filaP['Fichero'];
 	}
 
-	echo '<a href="detallefoto.php?foto='. $fila['IdFotoSelec'] .'" > <img src="img\\' . $ficheroSelec . '" height=350></a>';
+	echo '<a href="detallefoto.php?foto='. $IdFotoSelec .'" > <img src="img\\' . $ficheroSelec . '" height=350></a>';
 
 	echo '<br/>';
 	echo htmlspecialchars($NomUsuSelec);
