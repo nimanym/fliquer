@@ -79,7 +79,7 @@ if(!($resultado = @mysqli_query($link, $sentencia))) {
 
 ?>
 
-<form action="respuestaModificarDatos.php" method="post" id="formularioDatos">
+<form action="respuestaModificarDatos.php" method="post" id="formularioDatos" enctype="multipart/form-data" >
 	<h2>Modificar datos</h2>
 	Nombre de usuario: <br><input required type="text" name="nombreUsuario" id="nombreUsuario"><br>
 	Contraseña: <br><input required type="password" name="password1" id="password1"> <br>
@@ -104,6 +104,9 @@ if(!($resultado = @mysqli_query($link, $sentencia))) {
 	Sexo: <br />
 	<input type="radio" checked name="sexo" value="hombre" id="sexoHombre">Hombre<br>
 	<input type="radio" name="sexo" value="mujer" id="sexoMujer">Mujer<br>
+
+	<br>
+	Foto: <input type="file" name="fichero" /><br>
 
 	<br />
 	<input type="button" value="Enviar" onClick="enviarCambioDatos()" />

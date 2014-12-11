@@ -1,7 +1,7 @@
 <?php
 // Título de la página, se muestra en <title> y en el cuerpo de la página con <h2>
-$title = "Modificar datos - Fliquer";
-$nombre = "Modificar datos";
+$title = "Registro completado - Fliquer";
+$nombre = "Registro completado";
 
 require_once("cabecera.inc");
 ?>
@@ -42,8 +42,6 @@ if ($paisNombre!=''){
 	}
 }
 
-
-
 if($_FILES["fichero"]["error"]){
 	//echo "ERROR: " . $_FILES["fichero"]["error"];
 }
@@ -60,8 +58,6 @@ else
 		//echo "NO se ha subido bien: " . $_FILES["fichero"]["error"];
 	}
 }
-
-
 
 if (strcmp($sexo,"hombre"==0)){
 $genero=0;

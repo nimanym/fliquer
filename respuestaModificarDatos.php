@@ -42,8 +42,25 @@ if ($_POST["pais"]!=''){
 	}
 }
 
+$id_foto="";
+if($_FILES["fichero"]["error"]){
+	//echo "ERROR: " . $_FILES["fichero"]["error"];
+}
+else
+{
+	$id_foto = rand() . $_FILES["fichero"]["name"];
 
-$sentencia = 'UPDATE usuarios SET NomUsuario="' . $_POST["nombreUsuario"] . '", Clave="' . $_POST["password1"] . '", Email="' . $_POST["email"] . '", Sexo="' . $sexo . '", FNacimiento="' . $_POST["fechaNacimiento"] . '", Ciudad="' . $_POST["ciudad"] . '", Pais="' . $paisId . '" WHERE usuarios.NomUsuario="' . $_SESSION['nombreUsu'] . '"';
+	if(move_uploaded_file($_FILES["fichero"]["tmp_name"], "C:\\xampp\\htdocs\\fliquer\\img\\fotosUsuarios\\" . $id_foto))
+	{
+		//echo "Se ha subido bien: " . $_FILES["fichero"]["error"];
+	}
+	else
+	{
+		//echo "NO se ha subido bien: " . $_FILES["fichero"]["error"];
+	}
+}
+
+$sentencia = 'UPDATE usuarios SET NomUsuario="' . $_POST["nombreUsuario"] . '", Clave="' . $_POST["password1"] . '", Email="' . $_POST["email"] . '", Sexo="' . $sexo . '", FNacimiento="' . $_POST["fechaNacimiento"] . '", Ciudad="' . $_POST["ciudad"] . '", Pais="' . $paisId . '", Foto="' . $id_foto . '" WHERE usuarios.NomUsuario="' . $_SESSION['nombreUsu'] . '"';
 // Ejecuta la sentencia SQL
 
 if(!mysqli_query($iden, $sentencia))
@@ -69,6 +86,7 @@ session_destroy();
 
 ?>
 
+<br />
 <input type="button" value="Volver" onclick=" location.href='index.php' " />
 
 </body>

@@ -1,7 +1,7 @@
 <?php
 // Título de la página, se muestra en <title> y en el cuerpo de la página con <h2>
-$title = "Dar de baja - Fliquer";
-$nombre = "Dar de baja";
+$title = "Error - Fliquer";
+$nombre = "Error";
 
 require_once("cabecera.inc");
 
