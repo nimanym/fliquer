@@ -71,7 +71,37 @@ exit;
 <?php
 
 if(isset($_POST['titulo'])){
-	$sentencia = "INSERT INTO fotos VALUES (NULL, '". $_POST['titulo'] ."', '" . $_POST['descripcion']. "', '" . $_POST['fecha']. "', '" . $_POST['pais']. "', '1')";
+
+
+	$albumId=1;
+	$sentencia = 'SELECT IdAlbum FROM albumes WHERE Titulo="' . $_POST['albumes'] . '"';
+		if(!($resultado = @mysqli_query($link, $sentencia))) {
+				echo "<p>Error al ejecutar la sentencia <b>$sentencia</b>: " . mysqli_error($link);
+				echo '</p>';
+				exit;
+			}
+			while($filaP = mysqli_fetch_assoc($resultado)){
+					$albumId=$filaP['IdAlbum'];
+		}
+	}
+
+	$paisId=NULL;
+	if ($_POST['pais']!=''){
+			$sentencia = 'SELECT IdPais FROM paises WHERE NomPais="' . $_POST['pais'] . '"';
+			if(!($resultado = @mysqli_query($iden, $sentencia))) {
+				echo "<p>Error al ejecutar la sentencia <b>$sentencia</b>: " . mysqli_error($iden);
+				echo '</p>';
+				exit;
+			}
+			while($filaP = mysqli_fetch_assoc($resultado)){
+					$paisId=$filaP['IdPais'];
+		}
+	}
+
+	$stamp = date("Y-m-d H:i:s");
+
+
+	$sentencia = "INSERT INTO fotos VALUES (NULL, '". $_POST['titulo'] ."', '" . $_POST['descripcion']. "', '" . $_POST['fecha']. "', '" . $paisId. "', '" . $albumId. "', '" . $id_foto. "', '" . $stamp. "')";
 	if(!mysqli_query($link, $sentencia))
 	die("Error: no se pudo realizar la inserción");
 	echo 'Se ha insertado una nueva foto en la base de datos';
