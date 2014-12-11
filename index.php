@@ -68,6 +68,31 @@ mysqli_free_result($resultado);
 // Cierra la conexión
 mysqli_close($link);
 
+
+
+
+
+<?php
+if(($fichero = @file("seleccion.txt")) == false)
+{
+	echo "No se ha podido abrir el fichero";
+}
+else
+{
+	echo "<pre>\n";
+	foreach($fichero as $numLinea => $linea)
+	{
+		echo "Línea #<b>" . sprintf("%03d", $numLinea) . "</b> : ";
+		echo htmlspecialchars($linea);
+	}
+	echo "</pre>\n";
+}
+?>
+
+
+
+
+
 ?>
 
 </div>
