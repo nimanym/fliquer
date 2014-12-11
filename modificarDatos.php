@@ -81,7 +81,7 @@ if(!($resultado = @mysqli_query($link, $sentencia))) {
 
 <form action="respuestaModificarDatos.php" method="post" id="formularioDatos" enctype="multipart/form-data" >
 	<h2>Modificar datos</h2>
-	Nombre de usuario: <br><input required type="text" name="nombreUsuario" id="nombreUsuario" value="<?php $fila['NomUsuario'] ?>"><br>
+	Nombre de usuario: <br><input required type="text" name="nombreUsuario" id="nombreUsuario" value="HOLA" > <br>
 	Contraseña: <br><input required type="password" name="password1" id="password1"> <br>
 	Verificar contraseña: <br><input required type="password" name="password2" id="password2"><br>
 	E-mail: <br><input required type="email" name="email" id="email"><br>
