@@ -56,10 +56,38 @@ exit;
 
 <?php
 if(isset($_POST['titulo'])){
-	$sentencia = "INSERT INTO albumes VALUES (NULL, '". $_POST['titulo'] ."', '" . $_POST['descripcion']. "', '" . $_POST['fecha']. "', '" . $_POST['pais']. "', '1')";
+
+$usuId=1;
+$sentencia = 'SELECT IdUsuario FROM usuarios WHERE NomUsuario="' . $_SESSION['nombreUsu'] . '"';
+	if(!($resultado = @mysqli_query($link, $sentencia))) {
+			echo "<p>Error al ejecutar la sentencia <b>$sentencia</b>: " . mysqli_error($link);
+			echo '</p>';
+			exit;
+		}
+		while($filaP = mysqli_fetch_assoc($resultado)){
+				$usuId=$filaP['IdUsuario'];
+	}
+}
+
+$paisId=NULL;
+if ($_POST['pais']!=''){
+		$sentencia = 'SELECT IdPais FROM paises WHERE NomPais="' . $_POST['pais'] . '"';
+		if(!($resultado = @mysqli_query($iden, $sentencia))) {
+			echo "<p>Error al ejecutar la sentencia <b>$sentencia</b>: " . mysqli_error($iden);
+			echo '</p>';
+			exit;
+		}
+		while($filaP = mysqli_fetch_assoc($resultado)){
+				$paisId=$filaP['IdPais'];
+	}
+}
+
+
+
+	$sentencia = "INSERT INTO albumes VALUES (NULL, '". $_POST['titulo'] ."', '" . $_POST['descripcion']. "', '" . $_POST['fecha']. "', '" . $paisId. "', '" . $usuId. "')";
 	if(!mysqli_query($link, $sentencia))
 	die("Error: no se pudo realizar la inserción");
-	echo 'Se ha insertado un nuevo album en la base de datos';
+	echo 'Se ha creado un nuevo album!';
 }
 
 ?>
