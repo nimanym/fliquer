@@ -67,6 +67,7 @@ echo '</table>';
 
 
 
+
 if(($fichero = @file("seleccion.txt")) == false)
 {
 	echo "No se ha podido abrir el fichero";
@@ -91,6 +92,7 @@ else
 				$ficheroSelec=$filaP['Fichero'];
 	}
 
+}
 
 	echo '<a href="detallefoto.php?foto='. $fila['IdFotoSelec'] .'" > <img src="img\\' . $ficheroSelec . '" height=500></a>';
 
