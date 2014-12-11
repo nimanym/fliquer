@@ -94,9 +94,11 @@ else
 
 	echo '<a href="detallefoto.php?foto='. $fila['IdFotoSelec'] .'" > <img src="img\\' . $ficheroSelec . '" height=350></a>';
 
-
+	echo '<br/>';
 	echo htmlspecialchars($NomUsuSelec);
+	echo '<br/>';
 	echo htmlspecialchars($DescripSelec);
+	echo '<br/>';
 
 }
 
