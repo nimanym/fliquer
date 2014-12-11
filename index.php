@@ -77,9 +77,9 @@ else
 	$numSelecciones=(count($fichero)+1)/3;
 	$sorteo=rand()%$numSelecciones;
 
-	$IdFotoSelec=$fichero[$sorteo];
-	$NomUsuSelec=$fichero[$sorteo+1];
-	$DescripSelec=$fichero[$sorteo+2];
+	$IdFotoSelec=$fichero[$sorteo*3];
+	$NomUsuSelec=$fichero[$sorteo*3+1];
+	$DescripSelec=$fichero[$sorteo*3+2];
 
 
 	$sentencia = 'SELECT Fichero FROM fotos WHERE IdFoto=' . $IdFotoSelec;
