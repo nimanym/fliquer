@@ -67,6 +67,7 @@ if(!mysqli_query($iden, $sentencia))
 die("Error: no se pudo realizar la modificación.");
 echo 'Se han modificado correctamente tus datos';
 // Cierra la conexión con la base de datos
+
 mysqli_close($iden);
 
 unset($_COOKIE["recordar"]); 

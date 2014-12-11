@@ -40,11 +40,11 @@ exit;
 
 ?>
 
-<form action="anyadirFoto.php" method="post" id="formularioFoto">
+<form action="anyadirFoto.php" method="post" id="formularioFoto" enctype="multipart/form-data" >
 	<h2>Añadir una foto</h2>
 	Título: <br><input required type="text" name="titulo" id="titulo"><br>
 	Descripción: <br><input required type="text" name="descripcion" id="descripcion"> <br>
-	Fecha: <br><input required type="text" name="fecha" id="fecha"><br>
+	Fecha: <br><input required type="date" name="fecha" id="fecha"><br>
 	Pais: <br><select name="pais" id="pais">  
        <option value="" selected="selected"></option>
 		<?php
@@ -60,9 +60,11 @@ exit;
 			echo '<option value="' . $nomAlbumes['IdPais'] . '">' . $nomAlbumes['Titulo'] . '</option>';
 		}?>
 	</select><br>
+
+	<br>
+	Foto: <input type="file" name="fichero" /><br>
+
 	<br />
-
-
 	<input type="button" value="Enviar" onClick="submit()" />
 </form>
 
@@ -75,21 +77,20 @@ if(isset($_POST['titulo'])){
 
 	$albumId=1;
 	$sentencia = 'SELECT IdAlbum FROM albumes WHERE Titulo="' . $_POST['albumes'] . '"';
-		if(!($resultado = @mysqli_query($link, $sentencia))) {
-				echo "<p>Error al ejecutar la sentencia <b>$sentencia</b>: " . mysqli_error($link);
-				echo '</p>';
-				exit;
-			}
-			while($filaP = mysqli_fetch_assoc($resultado)){
-					$albumId=$filaP['IdAlbum'];
-		}
+	if(!($resultado = @mysqli_query($link, $sentencia))) {
+		echo "<p>Error al ejecutar la sentencia <b>$sentencia</b>: " . mysqli_error($link);
+		echo '</p>';
+		exit;
+	}
+	while($filaP = mysqli_fetch_assoc($resultado)){
+		$albumId=$filaP['IdAlbum'];
 	}
 
 	$paisId=NULL;
 	if ($_POST['pais']!=''){
 			$sentencia = 'SELECT IdPais FROM paises WHERE NomPais="' . $_POST['pais'] . '"';
-			if(!($resultado = @mysqli_query($iden, $sentencia))) {
-				echo "<p>Error al ejecutar la sentencia <b>$sentencia</b>: " . mysqli_error($iden);
+			if(!($resultado = @mysqli_query($link, $sentencia))) {
+				echo "<p>Error al ejecutar la sentencia <b>$sentencia</b>: " . mysqli_error($link);
 				echo '</p>';
 				exit;
 			}
@@ -100,6 +101,24 @@ if(isset($_POST['titulo'])){
 
 	$stamp = date("Y-m-d H:i:s");
 
+	$id_foto="";
+
+	if($_FILES["fichero"]["error"]){
+	//echo "ERROR: " . $_FILES["fichero"]["error"];
+	}
+	else
+	{
+		$id_foto = rand() . $_FILES["fichero"]["name"];
+
+		if(move_uploaded_file($_FILES["fichero"]["tmp_name"], "C:\\xampp\\htdocs\\fliquer\\img\\" . $id_foto))
+		{
+			//echo "Se ha subido bien: " . $_FILES["fichero"]["error"];
+		}
+		else
+		{
+			//echo "NO se ha subido bien: " . $_FILES["fichero"]["error"];
+		}
+	}
 
 	$sentencia = "INSERT INTO fotos VALUES (NULL, '". $_POST['titulo'] ."', '" . $_POST['descripcion']. "', '" . $_POST['fecha']. "', '" . $paisId. "', '" . $albumId. "', '" . $id_foto. "', '" . $stamp. "')";
 	if(!mysqli_query($link, $sentencia))

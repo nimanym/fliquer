@@ -39,7 +39,7 @@ exit;
 
 $fila = mysqli_fetch_assoc($resultado);
 
-$foto= $fila['Fichero'] . '.jpg';
+$foto= "img\\" . $fila['Fichero'];
 $nombre=$fila['Titulo'];
 $fecha=$fila['Fecha'];
 $pais=$fila['Pais'];
