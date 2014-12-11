@@ -74,7 +74,7 @@ if(($fichero = @file("seleccion.txt")) == false)
 }
 else
 {
-	$numSelecciones=($fichero.count()+1)/3;
+	$numSelecciones=(count($fichero)+1)/3;
 	$sorteo=rand()%$numSelecciones;
 
 	$IdFotoSelec=$fichero[$sorteo];
@@ -92,7 +92,7 @@ else
 				$ficheroSelec=$filaP['Fichero'];
 	}
 
-	echo '<a href="detallefoto.php?foto='. $fila['IdFotoSelec'] .'" > <img src="img\\' . $ficheroSelec . '" height=500></a>';
+	echo '<a href="detallefoto.php?foto='. $fila['IdFotoSelec'] .'" > <img src="img\\' . $ficheroSelec . '" height=350></a>';
 
 
 	echo htmlspecialchars($NomUsuSelec);
