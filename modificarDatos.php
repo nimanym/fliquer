@@ -23,7 +23,6 @@ if(!$link) {
 
 
 
-
 // Ejecuta una sentencia SQL
 $sentencia = 'SELECT * FROM usuarios WHERE usuarios.NomUsuario = "' . $_SESSION['nombreUsu'] . '"';
 if(!($resultado = @mysqli_query($link, $sentencia))) {
@@ -34,6 +33,14 @@ exit;
 
 // Recorre el resultado y lo muestra en forma de tabla HTML
 while($fila = mysqli_fetch_assoc($resultado)) {
+
+
+	$nombreForm = $fila['NomUsuario'];
+	$emailForm = $fila['Email'];
+	$sexoForm = $fila['Sexo'];
+	$fnacForm = $fila['FNacimiento'];
+	$ciudadForm = $fila['Ciudad'];
+	$paisForm = $fila['Pais'];
 
 	echo '<h2>' . 'Datos de ' .  $fila['NomUsuario'] . '</h2>';
 
@@ -81,15 +88,15 @@ if(!($resultado = @mysqli_query($link, $sentencia))) {
 
 <form action="respuestaModificarDatos.php" method="post" id="formularioDatos" enctype="multipart/form-data" >
 	<h2>Modificar datos</h2>
-	Nombre de usuario: <br><input required type="text" name="nombreUsuario" id="nombreUsuario" value="HOLA" > <br>
+	Nombre de usuario: <br><input required type="text" name="nombreUsuario" id="nombreUsuario" value="<?php echo $nombreForm; ?>" > <br>
 	Contraseña: <br><input required type="password" name="password1" id="password1"> <br>
 	Verificar contraseña: <br><input required type="password" name="password2" id="password2"><br>
-	E-mail: <br><input required type="email" name="email" id="email"><br>
-	Fecha de nacimiento: <br><input required type="date" name="fechaNacimiento" id="fechaNacimiento"><br>
-	Ciudad: <br><input type="text" name="ciudad" id="ciudad"><br>
+	E-mail: <br><input required type="email" name="email" id="email" value="<?php echo $emailForm; ?>" ><br>
+	Fecha de nacimiento: <br><input required type="date" name="fechaNacimiento" id="fechaNacimiento" value="<?php echo $fnacForm; ?>" ><br>
+	Ciudad: <br><input type="text" name="ciudad" id="ciudad" value="<?php echo $ciudadForm; ?>" ><br>
 	Pais: <br>
 
-	<select name="pais" id="pais">  
+	<select name="pais" id="pais" >  
 
        <option value="" selected="selected"></option>
 		<?php
