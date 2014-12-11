@@ -28,6 +28,7 @@ $fechaNacimiento=($_POST['fechaNacimiento']);
 $ciudad = ($_POST['ciudad']);
 $paisNombre = ($_POST['pais']);
 $paisId="";
+$id_foto="";
 
 if ($paisNombre!=''){
 		$sentencia = 'SELECT IdPais FROM paises WHERE NomPais="' . $paisNombre . '"';
@@ -44,11 +45,13 @@ if ($paisNombre!=''){
 
 
 if($_FILES["fichero"]["error"]){
-	echo "ERROR: " . $_FILES["fichero"]["error"];
+	//echo "ERROR: " . $_FILES["fichero"]["error"];
 }
 else
 {
-	if(move_uploaded_file($_FILES["fichero"]["tmp_name"], "C:\\xampp\\htdocs\\fliquer\\img\\fotosUsuarios\\" . rand() . $_FILES["fichero"]["name"] ))
+	$id_foto = rand() . $_FILES["fichero"]["name"];
+
+	if(move_uploaded_file($_FILES["fichero"]["tmp_name"], "C:\\xampp\\htdocs\\fliquer\\img\\fotosUsuarios\\" . $id_foto))
 	{
 		//echo "Se ha subido bien: " . $_FILES["fichero"]["error"];
 	}
@@ -78,7 +81,7 @@ if(preg_match($letrasynumeros, $nombreUsuario)&&!ctype_space ($nombreUsuario)&&$
 						if(preg_match($emailreg, $email)&&!ctype_space ($email)&&$email!=""){
 							if(!ctype_space ($sexo)&&$sexo!=""){
 								if($fechaNacimiento!="Invalid Date"){
-									$sentencia = "INSERT INTO usuarios VALUES (NULL, '". $nombreUsuario ."', '" . $password1. "', '" . $email. "', '" . $genero. "', '" . $fechaNacimiento. "',  '" . $ciudad . "', '" . $paisId . "', '/fotoE', '" . $stamp . "')";
+									$sentencia = "INSERT INTO usuarios VALUES (NULL, '". $nombreUsuario ."', '" . $password1. "', '" . $email. "', '" . $genero. "', '" . $fechaNacimiento. "',  '" . $ciudad . "', '" . $paisId . "',  '" . $id_foto . "', '" . $stamp . "')";
 									
 									if(!mysqli_query($iden, $sentencia)){
 										die("Error: no se pudo realizar la inserción");
