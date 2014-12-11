@@ -63,35 +63,49 @@ echo '</tr>';
 }
 echo '</table>';
 
-// Libera la memoria ocupada por el resultado
-mysqli_free_result($resultado);
-// Cierra la conexión
-mysqli_close($link);
 
 
 
 
-
-<?php
 if(($fichero = @file("seleccion.txt")) == false)
 {
 	echo "No se ha podido abrir el fichero";
 }
 else
 {
-	echo "<pre>\n";
-	foreach($fichero as $numLinea => $linea)
-	{
-		echo "Línea #<b>" . sprintf("%03d", $numLinea) . "</b> : ";
-		echo htmlspecialchars($linea);
+	$numSelecciones=($fichero.count()+1)/3;
+	$sorteo=rand()%$numSelecciones;
+
+	$IdFotoSelec=$fichero[$sorteo];
+	$NomUsuSelec=$fichero[$sorteo+1];
+	$DescripSelec=$fichero[$sorteo+2]
+
+
+	$sentencia = 'SELECT Fichero FROM fotos WHERE IdFoto=' . $IdFotoSelec;
+		if(!($resultado = @mysqli_query($link, $sentencia))) {
+			echo "<p>Error al ejecutar la sentencia <b>$sentencia</b>: " . mysqli_error($link);
+			echo '</p>';
+			exit;
+		}
+		while($filaP = mysqli_fetch_assoc($resultado)){
+				$ficheroSelec=$filaP['Fichero'];
 	}
-	echo "</pre>\n";
+
+
+	echo '<a href="detallefoto.php?foto='. $fila['IdFotoSelec'] .'" > <img src="img\\' . $ficheroSelec . '" height=500></a>';
+
+
+	echo htmlspecialchars($NomUsuSelec);
+	echo htmlspecialchars($DescripSelec);
+
 }
-?>
 
 
 
-
+// Libera la memoria ocupada por el resultado
+mysqli_free_result($resultado);
+// Cierra la conexión
+mysqli_close($link);
 
 ?>
 
