@@ -79,7 +79,7 @@ else
 
 	$IdFotoSelec=$fichero[$sorteo];
 	$NomUsuSelec=$fichero[$sorteo+1];
-	$DescripSelec=$fichero[$sorteo+2]
+	$DescripSelec=$fichero[$sorteo+2];
 
 
 	$sentencia = 'SELECT Fichero FROM fotos WHERE IdFoto=' . $IdFotoSelec;
