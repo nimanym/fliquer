@@ -92,8 +92,6 @@ else
 				$ficheroSelec=$filaP['Fichero'];
 	}
 
-}
-
 	echo '<a href="detallefoto.php?foto='. $fila['IdFotoSelec'] .'" > <img src="img\\' . $ficheroSelec . '" height=500></a>';
 
 
